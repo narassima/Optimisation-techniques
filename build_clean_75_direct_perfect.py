@@ -8143,8 +8143,8 @@ function renderApp() {
       <div style="max-width:1320px;margin:0 auto;padding:18px 24px 12px;display:flex;align-items:center;gap:14px;">
         <div style="font-size:2.2rem;">📐</div>
         <div>
-          <h1 style="font-size:1.45rem;font-weight:700;">OR Learning Hub – OTDM</h1>
-          <p style="font-size:.83rem;opacity:.88;margin-top:2px;">PGDM 2024-2026 · Great Lakes Institute of Management</p>
+          <h1 style="font-size:1.45rem;font-weight:700;">Optimization & Decision Modeling Hub</h1>
+          <p style="font-size:.83rem;opacity:.88;margin-top:2px;">Interactive Operations Research & Business Analytics Platform</p>
         </div>
       </div>
       <div class="nav-strip"><div class="nav-strip-inner">
@@ -8598,7 +8598,7 @@ final_html = f"""<!DOCTYPE html>
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>OR Learning Hub – OTDM (PGDM)</title>
+<title>Optimization & Decision Modeling Hub</title>
 <style>{css}</style>
 </head>
 <body>
