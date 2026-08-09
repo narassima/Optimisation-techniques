@@ -1,0 +1,881 @@
+=== SLIDE 1 ===
+Optimization Techniques and Decision 
+Making 
+Network Models, Transportation Problem, Assignment 
+Problems, Transshipment Problems
+Dr. Narassima M.S.
+Assistant Professor – Operations
+
+
+=== SLIDE 2 ===
+Transportation Problems
+
+=== SLIDE 3 ===
+Transportation Problem
+➢Special type of LPP where the objective is to minimize cost of distributing a
+commodity from various origins to destinations
+Objective function – Minimization of Cost:
+𝐌𝐢𝐧 𝐙 = ෍
+𝐢=𝟏
+𝐦
+෍
+𝐣=𝟏
+𝐧
+𝐂𝐢𝐣𝐱𝐢𝐣
+𝐂𝐢𝐣: 𝐭𝐫𝐚𝐧𝐬𝐩𝐨𝐫𝐭𝐚𝐭𝐢𝐨𝐧 𝐂𝐨𝐬𝐭; 𝐱𝐢𝐣: 𝐮𝐧𝐢𝐭𝐬 𝐬𝐡𝐢𝐩𝐩𝐞𝐝
+Constraints:
+Production in plant ‘i’: 𝑎𝑖 = 𝑥𝑖1 + 𝑥𝑖2 + 𝑥𝑖3 + ⋯ + 𝑥𝑖𝑛
+Demand in location ‘j’: 𝑏𝑗 = 𝑥1𝑗 + 𝑥2𝑗 + 𝑥3𝑗 + ⋯ + 𝑥𝑚𝑗
+𝑥𝑖𝑗 > 0
+෍
+𝑖=1
+𝑚
+𝑎𝑖 = ෍
+𝑗=1
+𝑛
+𝑏𝑗
+Balanced Transportation Problem
+
+=== SLIDE 4 ===
+Transportation Problem: MG Auto
+MG Auto has three plants in Los Angeles, Detroit, and New Orleans and two major distribution
+centers in Denver and Miami. The quarterly capacities of the three plants are 1000, 1500, and
+1200 cars, and the demands at the two distribution centers for the same period are 2300 and
+1400 cars.
+The table presents the Transportation Costs ($) per car on different routes.
+Decision Variables
+𝐱𝐢𝐣: 𝐍𝐮𝐦𝐛𝐞𝐫 𝐨𝐟 𝐜𝐚𝐫𝐬 𝐬𝐞𝐧𝐭 𝐟𝐫𝐨𝐦 𝐏𝐥𝐚𝐧𝐭′𝐢′ 𝐭𝐨 𝐃𝐢𝐬𝐭𝐫𝐢𝐛𝐮𝐭𝐢𝐨𝐧 𝐂𝐞𝐧𝐭𝐞𝐫′𝐣′ 𝐢 = 𝟏, 𝟐, 𝟑; 𝐣 = 𝟏, 𝟐
+Transportation Cost ($) Denver Miami
+Los Angeles 80 215
+Detroit 100 108
+New Orleans 102 68
+
+=== SLIDE 5 ===
+Transportation Problem: MG Auto
+Objective Function
+𝐌𝐢𝐧𝐢𝐦𝐢𝐳𝐞 𝐙 = 𝟖𝟎𝐱𝟏𝟏 + 𝟐𝟏𝟓𝐱𝟏𝟐 + 𝟏𝟎𝟎𝐱𝟐𝟏 + 𝟏𝟎𝟖𝐱𝟐𝟐 + 𝟏𝟎𝟐𝐱𝟑𝟏 + 𝟔𝟖𝐱𝟑𝟐
+Plant Capacity Constraints
+𝐱𝟏𝟏 + 𝐱𝟏𝟐 = 𝟏𝟎𝟎𝟎 (𝐋𝐨𝐬 𝐀𝐧𝐠𝐞𝐥𝐞𝐬)
+𝐱𝟐𝟏 + 𝐱𝟐𝟐 = 𝟏𝟓𝟎𝟎 (𝐃𝐞𝐭𝐫𝐨𝐢𝐭)
+𝐱𝟑𝟏 + 𝐱𝟑𝟐 = 𝟏𝟐𝟎𝟎 (𝐍𝐞𝐰 𝐎𝐫𝐥𝐞𝐚𝐧𝐬)
+Distribution Center Demand Constraints
+𝐱𝟏𝟏 + 𝐱𝟐𝟏 + 𝐱𝟑𝟏 = 𝟐𝟑𝟎𝟎 (𝐃𝐞𝐧𝐯𝐞𝐫)
+𝐱𝟏𝟐 + 𝐱𝟐𝟐 + 𝐱𝟑𝟐 = 𝟏𝟒𝟎𝟎 (𝐌𝐢𝐚𝐦𝐢)
+Non-negativity Constraints
+𝐱𝐢𝐣 ≥ 𝟎, 𝐢 = 𝟏, 𝟐, 𝟑, 𝐣 = 𝟏, 𝟐
+
+=== SLIDE 6 ===
+Transportation Problem: MG Auto
+Transportation Tableau Format
+Denver Miami Supply
+Los Angeles X11 X12 1000
+Detroit X21 X22 1500
+New Orleans X31 X32 1200
+Demand 2300 1400
+80 215
+100 108
+102 68
+Excel
+The associated minimum transportation cost is:
+1000 * $80 + 1300 * $100 + 200 * $108 + 1200 * $68 = $313,200
+
+
+=== SLIDE 7 ===
+Transportation Problem: MG Auto
+Adding a Dummy Plant
+Excel
+➢ If the capacity of Detroit is 1300
+➢ Demand exceeds the Supply i.e., demand
+will not be completely satisfied
+➢ Add a Dummy Plant (hypothetical) to
+balance the model
+➢ Unit transportation cost of the Dummy
+Plant is ‘zero’ as the plant does not exist
+➢ This plant is purely added for computation
+purpose and does not have any effect in
+the real-transportation solution
+The associated minimum transportation cost is: 
+1000 * $80 + 1300 * $100 + 1200 * $68 + 200 * $0 = $291,600
+Denver Miami Supply
+Los Angeles X11 X12 1000
+Detroit X21 X22 1300
+New Orleans X31 X32 1200
+Dummy Plant 200
+Demand 2300 1400
+80 215
+100 108
+102 68
+0 0
+
+=== SLIDE 8 ===
+Transportation Problem: MG Auto
+Adding a Dummy Plant
+➢ Dummy Plant ships 200 cars to Miami
+➢ Miami will be short of 200 cars
+➢ If a particular destination must not
+face shortages, assign a high penalty
+cost so that maximum allocation is
+done to avoid penalties
+Hint: Add penalty * Shortage to Z
+𝐌𝐢𝐧 𝐙 = ෍
+𝐢=𝟏
+𝐦
+෍
+𝐣=𝟏
+𝐧
+𝐂𝐢𝐣 + ෍
+𝐢=𝟏
+𝐦
+෍
+𝐣=𝟏
+𝐧
+𝐏𝐞𝐧𝐚𝐥𝐭𝐲𝐂𝐨𝐬𝐭𝐢𝐣𝐒𝐡𝐨𝐫𝐭𝐚𝐠𝐞𝐢𝐣
+Denver Miami Supply
+Los Angeles X11 X12 1000
+Detroit X21 X22 1300
+New Orleans X31 X32 1200
+Dummy Plant 200
+Demand 2300 1400
+80 215
+100 108
+102 68
+0 0
+
+=== SLIDE 9 ===
+Transportation Problem: MG Auto
+Adding a Dummy Distribution Center
+Denver Miami Dummy 
+DC Supply
+Los 
+Angeles X11 X12 1000
+Detroit X21 X22 1500
+New 
+Orleans X31 X32 1200
+Demand 1900 1400 400
+80 215
+100 108
+102 68
+Excel
+➢ If the demand at Denver is 1900
+➢ There is an excess supply
+➢ Add a dummy DC to receive the “surplus”
+supply
+➢ Transportation cost to this Dummy DC is
+‘zero’
+0
+0
+0
+➢ Similar to concept of dummy plant, dummy DC also has no practical significance
+The associated minimum transportation cost is: 
+1000 * $80 + 900 * $100 + 200 * $108 + 1200 * $68 + 400 * $0 = $273,200
+
+=== SLIDE 10 ===
+Transportation Problem: P & T COMPANY
+One of the main products of the P & T COMPANY is canned peas. The peas are prepared at three
+canneries (near Bellingham, Washington; Eugene, Oregon; and Albert Lea, Minnesota) and then
+shipped by truck to four distributing warehouses in the western United States (Sacramento,
+California; Salt Lake City, Utah; Rapid City, South Dakota; and Albuquerque, New Mexico).
+Because the shipping costs are a major expense, management is initiating a study to reduce them
+as much as possible. For the upcoming season, an estimate has been made of the output from
+each cannery, and each warehouse has been allocated a certain amount from the total supply of
+peas. This information is in units of truckloads, along with the shipping cost per truckload for
+each cannery- warehouse combination. Thus, there are a total of 300 truckloads to be shipped.
+The problem now is to determine which plan for assigning these shipments to the various
+cannery-warehouse combinations would minimize the total shipping cost.
+
+=== SLIDE 11 ===
+Transportation Problem: P & T COMPANY
+Decision Variables
+𝐱𝐢𝐣: 𝐍𝐮𝐦𝐛𝐞𝐫 𝐨𝐟 𝐓𝐫𝐮𝐜𝐤𝐥𝐨𝐚𝐝𝐬 𝐬𝐞𝐧𝐭 𝐟𝐫𝐨𝐦 𝐂𝐚𝐧𝐧𝐞𝐫𝐲 ′𝐢′ 𝐭𝐨 𝐖𝐚𝐫𝐞𝐡𝐨𝐮𝐬𝐞′𝐣′ 𝐢 = 𝟏, 𝟐, 𝟑; 𝐣 = 𝟏, 𝟐, 𝟑, 𝟒
+Objective function
+𝐌𝐢𝐧𝐢𝐦𝐢𝐳𝐞 𝐒𝐡𝐢𝐩𝐩𝐢𝐧𝐠 𝐂𝐨𝐬𝐭 𝐙
+= 𝟒𝟔𝟒𝐱𝟏𝟏 + 𝟓𝟏𝟑𝐱𝟏𝟐 + 𝟔𝟓𝟒𝐱𝟏𝟑 + 𝟖𝟔𝟕𝐱𝟏𝟒 + 𝟑𝟓𝟐𝐱𝟐𝟏 + 𝟒𝟏𝟔𝐱𝟐𝟐 + 𝟔𝟗𝟎𝐱𝟐𝟑 + 𝟕𝟗𝟏𝐱𝟐𝟒
++ 𝟗𝟗𝟓𝐱𝟑𝟏 + 𝟔𝟖𝟐𝐱𝟑𝟐 + 𝟑𝟖𝟖𝐱𝟑𝟑 + 𝟔𝟖𝟓𝐱𝟑𝟒
+Shipping Cost ($) per Truckload
+OutputWarehouse
+1 2 3 4
+Cannery 1 464 513 654 867 75
+Cannery 2 352 416 690 791 125
+Cannery 3 995 682 388 685 100
+Allocation 80 65 70 85
+
+=== SLIDE 12 ===
+Transportation Problem: P & T COMPANY
+Supply Constraints
+𝐱𝟏𝟏 + 𝐱𝟏𝟐 + 𝐱𝟏𝟑 + 𝐱𝟏𝟒 = 𝟕𝟓
+𝐱𝟐𝟏 + 𝐱𝟐𝟐 + 𝐱𝟐𝟑 + 𝐱𝟐𝟒 = 𝟏𝟐𝟓
+𝐱𝟑𝟏 + 𝐱𝟑𝟐 + 𝐱𝟑𝟑 + 𝐱𝟑𝟒 = 𝟏𝟎𝟎
+Demand Constraints
+𝐱𝟏𝟏 + 𝐱𝟐𝟏 + 𝐱𝟑𝟏 = 𝟖𝟎
+𝐱𝟏𝟐 + 𝐱𝟐𝟐 + 𝐱𝟑𝟐 = 𝟔𝟓
+𝐱𝟏𝟑 + 𝐱𝟐𝟑 + 𝐱𝟑𝟑 = 𝟕𝟎
+𝐱𝟏𝟒 + 𝐱𝟐𝟒 + 𝐱𝟑𝟒 = 𝟖𝟓
+Non-negativity Constraints
+𝐱𝐢𝐣 ≥ 𝟎, 𝐢 = 𝟏, 𝟐, 𝟑; 𝐣 = 𝟏, 𝟐, 𝟑, 𝟒
+
+
+=== SLIDE 13 ===
+Transportation Problem
+Balanced Transportation Problem
+෍
+𝑖=1
+𝑚
+𝑎𝑖 = ෍
+𝑗=1
+𝑛
+𝑏𝑗
+1. Basic feasible solution
+➢ Row and column constraints are satisfied
+➢ Non-negativity constraints are satisfied
+➢ Allocations are independent and do not form a loop
+➢ Has (m+n-1) non-negative allocations
+2. Optimal solution
+➢ Feasible solution with minimum cost
+Basic feasible 
+solution
+• Northwest corner rule
+• Least cost method
+• Penalty cost method
+Optimal 
+solution
+• Stepping Stone method
+• Modified Distribution 
+method
+
+=== SLIDE 14 ===
+Transportation Problem: Northwest Corner Rule
+Let us consider a Transportation problem with three Supply points and four Demand points. The
+Supply capacities and Demands are mentioned in the rows and columns respectively.
+Given: The transportation cost for each Supply-Demand point combination is mentioned at the
+top-right corner.
+To find: The number of units to be allocated (shipped) across each Supply-Demand route.
+40
+60
+50
+20 30 60 40
+4 6 8 8
+6 8 6 7
+5 7 6 8
+Supply
+Demand
+
+=== SLIDE 15 ===
+Transportation Problem: Northwest Corner Rule
+𝐌𝐢𝐧 𝐙 = ෍
+𝐢=𝟏
+𝐦
+෍
+𝐣=𝟏
+𝐧
+𝐂𝐢𝐣𝐱𝐢𝐣
+𝐓𝐨𝐭𝐚𝐥 𝐂𝐨𝐬𝐭 = (𝟒 ∗ 𝟐𝟎) + (𝟔 ∗ 𝟐𝟎) + (𝟖 ∗ 𝟏𝟎) + (𝟔 ∗ 𝟓𝟎) + (𝟔 ∗ 𝟏𝟎) + (𝟖 ∗ 𝟒𝟎) = 𝟗𝟔𝟎
+40
+60
+50
+20 30 60 40
+4 6 8 8
+6 8 6 7
+5 7 6 8
+Supply
+Demand
+20
+0
+2020 0
+10
+10
+0
+5050 0
+10
+10
+0
+4040 0
+0
+
+
+=== SLIDE 16 ===
+Transportation Problem: Northwest Corner Rule
+Checking the feasibility of the solution:
+➢Row and column constraints are satisfied i.e., Supply = Demand
+➢All the Supply and Demand values are changed to ‘0’ after allocation(s)
+➢ Non-negativity constraints must be satisfied
+➢All the allocations made are greater than zero
+➢Basic feasible solution must have (m+n-1) non-negative allocations
+➢Total allocations = (3+4-1) = 6
+➢Allocations must be independent i.e., there must be no loop formation
+➢No loop formation
+
+
+=== SLIDE 17 ===
+Transportation Problem: Least-Cost Method
+Let us consider a Transportation problem with three Supply points and four Demand points.
+The Supply capacities and Demands are mentioned in the rows and columns respectively.
+Given: The transportation cost for each Supply-Demand point combination is mentioned at the
+top-right corner.
+To find: The number of units to be allocated (shipped) across each Supply-Demand route.
+15
+25
+10
+5 15 15 15
+10 2 20 11
+12 7 9 20
+4 14 16 18
+Supply
+Demand
+
+=== SLIDE 18 ===
+Transportation Problem: Least-Cost Method
+𝐌𝐢𝐧 𝐙 = ෍
+𝐢=𝟏
+𝐦
+෍
+𝐣=𝟏
+𝐧
+𝐂𝐢𝐣𝐱𝐢𝐣
+𝐓𝐨𝐭𝐚𝐥 𝐂𝐨𝐬𝐭 = 𝟏𝟓 × 𝟐 + 𝟏𝟓 × 𝟗 + 𝟏𝟎 × 𝟐𝟎 + 𝟓 × 𝟒 + 𝟓 × 𝟏𝟖 = 𝟒𝟕𝟓
+15
+25
+10
+5 15 15 15
+10 2 20 11
+12 7 9 20
+4 14 16 18
+Supply
+Demand
+15
+0
+0
+5
+0
+5
+15
+0
+10
+5 0
+10
+10 0
+0
+
+=== SLIDE 19 ===
+Transportation Problem: Penalty cost method 
+(Vogel’s approximation method)
+Let us consider a Transportation problem with three Supply points and four Demand points.
+The Supply capacities and Demands are mentioned in the rows and columns respectively.
+Given: The transportation cost for each Supply-Demand point combination is mentioned at the
+top-right corner.
+To find: The number of units to be allocated (shipped) across each Supply-Demand route.
+40
+60
+50
+20 30 60 40
+4 6 8 8
+6 8 6 7
+5 7 6 8
+Supply
+Demand
+
+=== SLIDE 20 ===
+Transportation Problem: Penalty cost method 
+(Vogel’s approximation method)
+➢Penalty: Minimum additional cost per unit by not being able to allocate to the least cost route
+➢Find maximum penalty and allocate as much in the least cost position
+𝐓𝐨𝐭𝐚𝐥 𝐓𝐫𝐚𝐧𝐬𝐩𝐨𝐫𝐭𝐚𝐭𝐢𝐨𝐧 𝐂𝐨𝐬𝐭
+= (𝟐𝟎 ∗ 𝟒) + (𝟐𝟎 ∗ 𝟔) + (𝟐𝟎 ∗ 𝟔) + (𝟒𝟎 ∗ 𝟔) + (𝟏𝟎 ∗ 𝟕) + (𝟒𝟎 ∗ 𝟕) = 𝟗𝟏𝟎
+40 (2)
+60 (0)
+50 (1)
+20 30 60 40
+(1) (1) (0) (1)
+4 6 8 8
+6 8 6 7
+5 7 6 8
+Penalty cost per unit
+Supply
+Demand
+20
+0
+2020 0
+10
+10
+0
+40
+(1)
+(2)40
+20
+0
+20 40
+0
+50
+0
+0
+
+
+=== SLIDE 21 ===
+Assignment Problems
+
+=== SLIDE 22 ===
+Assignment Problem
+➢Two Hungarian mathematicians, Dénes Kőnig
+and Jenő Egerváry
+➢Special type of transportation problem
+➢The allocation cannot be split
+➢Evolved from Simplex methods
+➢Matching resources with tasks
+➢Examples: Assigning exactly one work to a
+worker; Assigning courses to Professors;
+Assigning cabs to passengers; Project task
+mapping to employees based on skillset
+
+
+=== SLIDE 23 ===
+Assignment Problem: Klyne’s Assignment Problem
+Joe Klyne’s three children, John, Karen, and Terri, want to earn some money for personal
+expenses. Mr. Klyne has chosen three chores for his children: mowing the lawn, painting the
+garage door, and washing the family cars. To avoid anticipated sibling competition, he asks them
+to submit individual (secret) bids for what they feel is fair pay for each of the three chores. The
+children will abide by their father’s decision regarding the assignment of chores. The table
+indicates the bids received ($) from the children.
+Mow Paint Wash
+John 15 10 9
+Karen 9 15 10
+Terri 10 12 8
+
+=== SLIDE 24 ===
+Assignment Problem: Klyne’s Assignment Problem
+Step 1: Determine ‘pi’, the minimum cost element of row ‘i’ in the original cost matrix, and
+subtract
+it from all the elements of row ‘i’, i = 1, 2, 3.
+Mow Paint Wash
+John 15 10 9
+Karen 9 15 10
+Terri 10 12 8
+Mow Paint Wash Row min
+John 6 1 0 9
+Karen 0 6 1 9
+Terri 2 4 0 8
+Step 2: Subtracting the Row minimum from all other elements in each row
+
+=== SLIDE 25 ===
+Assignment Problem: Klyne’s Assignment Problem
+Step 3: For the matrix created in step 1, determine ‘qj’, the minimum cost element of column ‘j’,
+and subtract it from all the elements of column ‘j’, j = 1, 2, 3.
+Mow Paint Wash
+John 6 1 0
+Karen 0 6 1
+Terri 2 4 0
+Column Minimum 0 1 0
+Mow Paint Wash
+John 6 0 0
+Karen 0 5 1
+Terri 2 3 0
+𝐓𝐨𝐭𝐚𝐥 𝐂𝐨𝐬𝐭 = 𝟏𝟎 + 𝟗 + 𝟖
+In some cases, further steps are required to attain the optimal solution
+
+=== SLIDE 26 ===
+Assignment Problem: Klyne’s Assignment Problem
+Suppose that the situation discussed is extended to four children and four chores.
+Assignment Matrix
+Chores 1 2 3 4
+Child 1 1 4 6 3
+Child 2 9 7 10 9
+Child 3 4 5 11 7
+Child 4 8 7 8 5
+Reduced Assignment Matrix after subtracting Row Minimum
+Chores 1 2 3 4 Row Min
+Child 1 0 3 5 2 1
+Child 2 2 0 3 2 7
+Child 3 0 1 7 3 4
+Child 4 3 2 3 0 5
+
+=== SLIDE 27 ===
+Assignment Problem: Klyne’s Assignment Problem
+Reduced Assignment Matrix after subtracting Column Minimum
+Chores 1 2 3 4
+Child 1 0 3 5 2
+Child 2 2 0 3 2
+Child 3 0 1 7 3
+Child 4 3 2 3 0
+Col Min 0 0 3 0
+Chores 1 2 3 4
+Child 1 0 3 2 2
+Child 2 2 0 0 2
+Child 3 0 1 4 3
+Child 4 3 2 0 0
+➢ The locations of the zero entries do not allow assigning unique chores to all the children.
+
+=== SLIDE 28 ===
+Assignment Problem: Klyne’s Assignment Problem
+Chores 1 2 3 4
+Child 1 0 3 2 2
+Child 2 2 0 0 2
+Child 3 0 1 4 3
+Child 4 3 2 0 0
+➢ If we assign chore 1 to child 1, then child 3 will not have a zero entry.
+We need to follow these steps to identify the feasible assignment
+1. Draw the minimum number of horizontal and vertical lines in the last reduced matrix to
+cover all the zero entries
+Chores 1 2 3 4
+Child 1 0 3 2 2
+Child 2 2 0 0 2
+Child 3 0 1 4 3
+Child 4 3 2 0 0
+
+=== SLIDE 29 ===
+Assignment Problem: Klyne’s Assignment Problem
+2. Select the smallest uncovered entry, subtract it from every uncovered entry, and then add it
+to every entry at the intersection of two lines.
+Chores 1 2 3 4
+Child 1 0 2 1 1
+Child 2 3 0 0 2
+Child 3 0 0 3 2
+Child 4 4 2 0 0
+Feasible Allocation: Child 1 – Chore 1; Child 2 – Chore 3; Child 3 – Chore 2; Child 4 – Chore 4
+𝐓𝐨𝐭𝐚𝐥 𝐂𝐨𝐬𝐭 = 𝟏 + 𝟏𝟎 + 𝟓 + 𝟓 = 𝟐𝟏
+
+=== SLIDE 30 ===
+Assignment Problem: JOB SHOP COMPANY
+The JOB SHOP COMPANY has purchased three new machines of different types. There are four
+available locations in the shop where a machine could be installed. Some of these locations are
+more desirable than others for particular machines because of their proximity to work centers that
+will have a heavy work flow to and from these machines. Therefore, the objective is to assign the
+new machines to the available locations to minimize the total cost of materials handling. The
+estimated cost in dollars per hour of materials handling involving each of the machines is given in
+Table for the respective locations. Location 2 is not considered suitable for machine 2, so no cost is
+given for this case.
+Material Handling 
+Costs ($)
+Location
+1 2 3 4
+Machine 1 13 16 12 11
+Machine 2 15 - 13 20
+Machine 3 5 7 10 6
+
+=== SLIDE 31 ===
+Assignment Problem: JOB SHOP COMPANY
+➢ We introduce a dummy machine as we have an extra location
+Material Handling 
+Costs ($)
+Location
+1 2 3 4 Row Min
+Machine 1 13 16 12 11 11
+Machine 2 15 M 13 20 13
+Machine 3 5 7 10 6 5
+Dummy 0 0 0 0 0
+Material Handling 
+Costs ($)
+Location
+1 2 3 4
+Machine 1 2 5 1 0
+Machine 2 2 M 0 7
+Machine 3 0 2 5 1
+Dummy 0 0 0 0
+➢ Subtracting the Row minimum
+
+=== SLIDE 32 ===
+Assignment Problem: JOB SHOP COMPANY
+Material Handling 
+Costs ($)
+Location
+1 2 3 4
+Machine 1 2 5 1 0
+Machine 2 2 M 0 7
+Machine 3 0 2 5 1
+Dummy 0 0 0 0
+Col Min 0 0 0 0
+➢ Subtracting the Column minimum
+Material Handling 
+Costs ($)
+Location
+1 2 3 4
+Machine 1 2 5 1 0
+Machine 2 2 M 0 7
+Machine 3 0 2 5 1
+Dummy 0 0 0 0
+𝐓𝐨𝐭𝐚𝐥 𝐌𝐚𝐭𝐞𝐫𝐢𝐚𝐥 𝐇𝐚𝐧𝐝𝐥𝐢𝐧𝐠 𝐜𝐨𝐬𝐭 = 𝟏𝟏 + 𝟏𝟑 + 𝟓 = $ 𝟐𝟗 𝐩𝐞𝐫 𝐡𝐨𝐮𝐫
+
+=== SLIDE 33 ===
+Network Optimization
+
+=== SLIDE 34 ===
+Shortest Path: Seervada Park
+SEERVADA PARK has recently been set aside for a limited amount of sightseeing and
+backpack hiking. Cars are not allowed into the park, but there is a narrow, winding road
+system for trams and for jeeps driven by the park rangers. This road system is shown
+(without the curves) in the Figure, where location O is the entrance into the park; other letters
+designate the locations of ranger stations (and other limited facilities). The numbers give the
+distances of these winding roads in miles. The park contains a scenic wonder at station T. A
+small number of trams are used to transport sightseers from the park entrance to station T
+and back.
+The park management currently faces three problems. One is to determine which route from
+the park entrance to station T has the smallest total distance for the operation of the trams.
+Shortest Path Problem
+
+=== SLIDE 35 ===
+Shortest Path: Seervada Park
+Shortest Path Problem
+➢ The example is an undirected connected network from an origin (O) to a destination (T)
+➢ Each link between the nodes have a non-negative distance
+General Algorithm
+Objective of the ‘n’th iteration
+➢ Determine the ‘n’th nearest node (n = 1,2,…) until
+the ‘n’th nearest node is the destination
+Input for iteration ‘n’
+➢ ‘n-1’ nearest nodes, their shortest paths, and distance from origin
+➢ These nodes (including the origin) are called as solved nodes, while others are called
+unsolved nodes
+
+=== SLIDE 36 ===
+Shortest Path: Seervada Park
+n
+Solved Nodes 
+Directly Connected 
+to Unsolved Nodes
+Closest 
+Connected 
+Unsolved Node
+Total Distance 
+Involved
+nth Nearest 
+Node
+Minimum 
+Distance
+Last 
+Connection
+1 O A 2 A 2 OA
+2
+3
+O
+A
+C
+B
+4
+2+2=4
+C
+B 4 OC
+AB
+4
+A
+B
+C
+D
+E
+E
+2+7=9
+4+3=7
+4+4=8
+E 7 BE
+5
+A
+B
+E
+D
+D
+D
+2+7=9
+4+4=8
+7+1=8
+D 8 BD
+ED
+6 D
+E
+T
+T
+8+5=13
+7+7=14 T 13 DT
+Trace the Shortest path from the destination to origin: 𝐓 − 𝐃 − 𝐄 − 𝐁 − 𝐀 − 𝐎 𝐚𝐧𝐝 𝐓 − 𝐃 − 𝐁 − 𝐀 − 𝐎
+𝐒𝐡𝐨𝐫𝐭𝐞𝐬𝐭 𝐏𝐚𝐭𝐡: 𝐎 → 𝐀 → 𝐁 → 𝐄 → 𝐃 → 𝐓 and 𝐎 → 𝐀 → 𝐁 → 𝐃 → 𝐓
+
+=== SLIDE 37 ===
+Minimum Spanning Tree
+Similarities with Shortest Path
+➢ It has undirected connected network
+➢ Measures the positive length associated with each link
+How are they different?
+➢ Shortest path: Establish the shortest connection between origin and destination
+➢ Minimum spanning tree: Cover every node in the network with minimal total length of the
+network
+Feasibility Condition: Needs to have ‘n-1’ connections for ‘n’ nodes with no cycle formation
+Applications
+➢ Design of telecommunication networks, electrical transmission lines, pipeline installation, etc.
+
+=== SLIDE 38 ===
+Minimum Spanning Tree
+Examples
+a) Not a spanning tree: O, A, B, and C are not connected with nodes D, E, and T
+b) Does not form a tree: O–A–B–C–O and D–T–E–D form two cycles (too many links)
+c) Network has ‘n-1’ links with no cycles: Feasible solution
+
+
+=== SLIDE 39 ===
+Minimum Spanning Tree
+Steps
+➢ Select any node arbitrarily, and then connect it (i.e., add a link) to the nearest distinct node
+➢ Identify the unconnected node that is closest to a connected node, and then connect these
+two nodes
+➢ Repeat this step until all nodes have been connected
+➢ Tie breaking: Ties for the nearest distinct node (step 1) or the closest unconnected node
+(step 2) may be broken arbitrarily, and the algorithm must still yield an optimal solution
+➢ These ties indicate the presence of multiple optimal solutions
+Words based on Kruskal’s Algorithm
+
+=== SLIDE 40 ===
+Minimum Spanning Tree: Seervada Park
+The Seervada Park management (see Sec. 9.1) needs to determine under which roads
+telephone lines should be installed to connect all stations with a minimum total length of line.
+➢ Starting with Node ‘O’ arbitrarily
+
+=== SLIDE 41 ===
+Minimum Spanning Tree: Seervada Park
+➢ The unconnected node closest to node O is node A.
+➢ Connect node A to node O.
+
+
+=== SLIDE 42 ===
+Minimum Spanning Tree: Seervada Park
+➢ The unconnected node closest to either node O or node A is node B (closest to A).
+➢ Connect node B to node A.
+
+
+=== SLIDE 43 ===
+Minimum Spanning Tree: Seervada Park
+➢ The unconnected node closest to node O, A, or B is node C (closest to B).
+➢ Connect node C to node B.
+
+
+=== SLIDE 44 ===
+Minimum Spanning Tree: Seervada Park
+➢ The unconnected node closest to node O, A, B, or C is node E (closest to B).
+➢ Connect node E to node B.
+
+
+=== SLIDE 45 ===
+Minimum Spanning Tree: Seervada Park
+➢ The unconnected node closest to node O, A, B, C, or E is node D (closest to E).
+➢ Connect node D to node E.
+
+
+=== SLIDE 46 ===
+Minimum Spanning Tree: Seervada Park
+➢ The only remaining unconnected node is node T. It is closest to node D.
+➢ Connect node T to node D.
+
+
+=== SLIDE 47 ===
+Minimum Spanning Tree: Seervada Park
+➢ All the nodes are connected
+Solution to the problem:
+➢ Has ‘n-1’ links
+➢ The links highlighted needs to be used to connect all the nodes with minimal total distance
+𝐌𝐢𝐧𝐢𝐦𝐮𝐦 𝐒𝐩𝐚𝐧𝐧𝐢𝐧𝐠 𝐝𝐢𝐬𝐭𝐚𝐧𝐜𝐞 = 𝟐 + 𝟐 + 𝟏 + 𝟑 + 𝟏 + 𝟓 = 𝟏𝟒 𝐦𝐢𝐥𝐞𝐬
+
+
+=== SLIDE 48 ===
+Minimum Spanning Tree: Midwest TV Cable Company
+Midwest TV Cable Company is providing cable service to five new housing developments.
+Figure depicts possible TV connections to the five areas, with cable miles affixed on each arc.
+The goal is to determine the most economical cable network.
+
+
+=== SLIDE 49 ===
+Minimum Spanning Tree: Midwest TV Cable Company
+
+
+=== SLIDE 50 ===
+Minimum Spanning Tree: Midwest TV Cable Company
+
+
+=== SLIDE 51 ===
+Minimum Spanning Tree: Midwest TV Cable Company
+There are multiple Optimal Solutions as indicated by the bold links and the two dashed lines to link node 3
+
+=== SLIDE 52 ===
+Assignment Problem: BETTER PRODUCTS COMPANY 
+The BETTER PRODUCTS COMPANY has decided to initiate the production of four new products,
+using three plants that currently have excess production capacity. The products require a comparable
+production effort per unit, so the available production capacity of the plants is measured by the number
+of units of any product that can be produced per day, as given in the rightmost column. The bottom row
+gives the required production rate per day to meet projected sales. Each plant can produce any of these
+products, except that Plant 2 cannot produce product 3. However, the variable costs per unit of each
+product differ from plant to plant, as shown in the Table. Management now needs to make a decision on
+how to split up the production of the products among plants. Two kinds of options are available.
+Option 1: Permit product splitting, where the same product is produced in more than one plant.
+Option 2: Prohibit product splitting.
+This second option imposes a constraint that can only increase the cost of an optimal solution. On the
+other hand, the key advantage of Option 2 is that it eliminates some hidden costs associated with
+product splitting that are not reflected in Table, including extra setup, distribution, and administration
+costs.
+
+=== SLIDE 53 ===
+Assignment Problem: BETTER PRODUCTS COMPANY 
+Therefore, management wants both options analyzed before a final decision is made. For Option 2,
+management further specifies that every plant should be assigned at least one of the products.
+Solution approach:
+We will formulate and solve the model for each option in turn, where Option 1 leads to a transportation
+problem and Option 2 leads to an assignment problem.
+Unit Cost ($) for Product Capacity 
+Available1 2 3 4
+Plant 1 41 27 28 24 75
+Plant 2 40 29 - 23 75
+Plant 3 37 30 27 21 45
+Production rate 20 30 30 40
+
+=== SLIDE 54 ===
+Assignment Problem: BETTER PRODUCTS COMPANY 
+Option 1: Transportation problem
+➢ Add ‘M’ in Plant 2 – Location 3
+➢ Add a Dummy Column as Capacity is more than the Production Rate
+𝐱𝟏𝟐 = 𝟑𝟎, 𝐱𝟏𝟑 = 𝟑𝟎, 𝐱𝟏𝟓 = 𝟏𝟓, 𝐱𝟐𝟒 = 𝟏𝟓, 𝐱𝟐𝟓 = 𝟔𝟎, 𝐱𝟑𝟏 = 𝟐𝟎, 𝐱𝟑𝟒 = 𝟐𝟓
+Unit Cost ($) for Product Capacity 
+Available1 2 3 4 Dummy Demand
+Plant 1 41 27 28 24 0 75
+Plant 2 40 29 - 23 0 75
+Plant 3 37 30 27 21 0 45
+Production 
+rate 20 30 30 40 75
+Excel
+
+=== SLIDE 55 ===
+Assignment Problem: BETTER PRODUCTS COMPANY 
+Option 1: Transportation problem
+Decision Variables
+𝐱𝐢𝐣 = 𝐔𝐧𝐢𝐭𝐬 𝐨𝐟 𝐏𝐫𝐨𝐝𝐮𝐜𝐭 ′𝐣′ 𝐩𝐫𝐨𝐝𝐮𝐜𝐞𝐝 𝐢𝐧 𝐏𝐥𝐚𝐧𝐭 ′𝐢′ 𝐢 = 𝟏, 𝟐, 𝟑; 𝐣 = 𝟏, 𝟐, 𝟑, 𝟒, 𝟓
+Objective Function
+𝐌𝐢𝐧𝐢𝐦𝐢𝐳𝐞 𝐙
+= 𝟒𝟏𝐱𝟏𝟏 + 𝟐𝟕𝐱𝟏𝟐 + 𝟐𝟖𝐱𝟏𝟑 + 𝟐𝟒𝐱𝟏𝟒 + 𝟒𝟎𝐱𝟐𝟏 + 𝟐𝟗𝐱𝟐𝟐 + 𝐌𝐱𝟐𝟑 + 𝟐𝟑𝐱𝟐𝟒 + 𝟑𝟕𝐱𝟑𝟏 + 𝟑𝟎𝐱𝟑𝟐
++ 𝟐𝟕𝐱𝟑𝟑 + 𝟐𝟏𝐱𝟑𝟒
+Plant Capacity Constraints
+𝐱𝟏𝟏 + 𝐱𝟏𝟐 + 𝐱𝟏𝟑 + 𝐱𝟏𝟒 + 𝐱𝟏𝟓 = 𝟕𝟓
+𝐱𝟐𝟏 + 𝐱𝟐𝟐 + 𝐱𝟐𝟑 + 𝐱𝟐𝟒 + 𝐱𝟐𝟓 = 𝟕𝟓
+𝐱𝟑𝟏 + 𝐱𝟑𝟐 + 𝐱𝟑𝟑 + 𝐱𝟑𝟒 + 𝐱𝟑𝟓 = 𝟒𝟓
+
+=== SLIDE 56 ===
+Assignment Problem: BETTER PRODUCTS COMPANY 
+Option 1: Transportation problem
+Product Production Rate Constraints
+𝐱𝟏𝟏 + 𝐱𝟐𝟏 + 𝐱𝟑𝟏 = 𝟐𝟎
+𝐱𝟏𝟐 + 𝐱𝟐𝟐 + 𝐱𝟑𝟐 = 𝟑𝟎
+𝐱𝟏𝟑 + 𝐱𝟐𝟑 + 𝐱𝟑𝟑 = 𝟑𝟎
+𝐱𝟏𝟒 + 𝐱𝟐𝟒 + 𝐱𝟑𝟒 = 𝟒𝟎
+𝐱𝟏𝟓 + 𝐱𝟐𝟓 + 𝐱𝟑𝟓 = 𝟕𝟓
+Non-negativity Constraints
+𝐱𝐢𝐣 ≥ 𝟎, 𝐢 = 𝟏, 𝟐, 𝟑, 𝐣 = 𝟏, 𝟐, 𝟑, 𝟒, 𝟓
+
+=== SLIDE 57 ===
+Assignment Problem: BETTER PRODUCTS COMPANY 
+Option 2: Assignment problem: Additional Constraints
+Let yij be a binary decision variable
+𝐲𝐢𝐣 = ቊ𝟏, 𝒊𝒇 𝒑𝒍𝒂𝒏𝒕 ′𝒊′ 𝒑𝒓𝒐𝒅𝒖𝒄𝒆𝒔 𝒑𝒓𝒐𝒅𝒖𝒄𝒕 ′𝒋′
+𝟎, 𝒐𝒕𝒉𝒆𝒓𝒘𝒊𝒔𝒆
+Constraint for one assignment per row
+෍
+𝐣=𝟏
+𝐦
+𝐲𝐢𝐣 = 𝟏, ∀ 𝐢 𝛜 {𝟏, 𝟐, … , 𝐧}
+Constraint for one assignment per row
+෍
+𝐢=𝟏
+𝐧
+𝐲𝐢𝐣 = 𝟏, ∀ 𝐣 𝛜 {𝟏, 𝟐, … , 𝐦}
+
+=== SLIDE 58 ===
+Thank You
+

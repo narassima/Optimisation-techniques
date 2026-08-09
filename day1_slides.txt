@@ -1,0 +1,179 @@
+=== SLIDE 1 ===
+Optimization Techniques and Decision Making Introduction to optimization and application in decision-makingDr. Narassima M.S.Assistant Professor – Operations
+
+
+=== SLIDE 2 ===
+Optimization: IntroductionDefinitionA process of achieving thebest possible solution/ outcomeusing the available resourcesThe objective(s) of optimization problems is Minimizing inputs and/ or Maximizing outputsSet of problems used for decision-making in constrained environments withlarge solution spaceImportance of the Operations Research ProblemSupply Chain Management:Inventory management, transportation routing, warehouse locationsManufacturing:Production scheduling, optimizing resource/ machine utilizationFinance:Portfolio optimization, profit maximizationHealthcare:Minimizing waiting time, maximizing service levelsMiscellaneous:Dynamic pricing, shelf space optimization
+
+=== SLIDE 3 ===
+ExampleWhy It's CalledTypeClassificationMinimize transportation costThe objective function is a linear equationLinearObjective FunctionMaximize fuel efficiencyThe objective function contains non-linear termsNon-LinearPortfolio optimization with risk limitsIncludes restrictions on variablesConstrainedConstraintsMaximize revenue without raw material restrictionsNo restrictions on variablesUnconstrainedOptimize composition of drugsVariables can take any value in a rangeContinuousVariablesAllocate staff shifts (binary variables)Variables are restricted to discrete valuesDiscreteMinimize fuel cost in logisticsThe solution space forms a convex regionConvexSolution SpaceEngine design with local optimaThe solution space is non-convex, with local optimaNon-Convex
+Classification of Optimization Problems
+
+=== SLIDE 4 ===
+Classification of Optimization ProblemsExampleWhy It's CalledTypeClassificationAnnual budget allocationParameters remain constant over timeStaticTime DependencyReal-time traffic optimization (Google Maps)Parameters change over timeDynamicMinimize project costOptimizes a single goalSingle-ObjectiveObjectivesMaximize quality, minimize costOptimizes multiple conflicting goalsMulti-ObjectiveManufacturing with fixed inputsInputs and parameters are fully knownDeterministicDeterminismInventory management with uncertain demandInputs or parameters involve uncertaintyStochasticLinear ProgrammingProvides a precise optimal solutionExactApproachTruck routing via AlgorithmsUses approximate methods for near-optimal solutionsHeuristic
+
+=== SLIDE 5 ===
+Classification of Optimization ProblemsExampleWhy It's CalledTypeClassificationOptimizing resource utilizationUses linear objectives and constraintsLinear ProgrammingApplicationFacility location problemDecision variables are integersInteger ProgrammingSupply Chain network optimisationSome or all decision variables are integersMixed-Integer Linear ProgrammingOptimize Amazon’s supply chainInvolves many variables and constraintsLarge-ScaleScaleSchedule production for one factoryInvolves few variables and constraintsSmall-Scale
+
+=== SLIDE 6 ===
+Steps Involved to solve an Operations Research problemDriving to the office with friends Number of people, locations, available routes, size of transportObjective(s), Decision variable(s) and ConstraintsDetermining the routeAre objective(s) and constraints satisfied?Drive safe!!! Enjoy the ride!!! 
+Problem IdentificationData CollectionModel FormulationSolving the ModelValidation of ResultsImplementation
+
+=== SLIDE 7 ===
+Basic components in OptimizationDecision variablesRepresent the choices or actions that can be controlled based on a set of variables Set of variables, 𝑥 =𝑥ଵ, 𝑥ଶ, … , 𝑥௡, on which a decision is requiredExample: Number of chairs to be produced, number of patients treated, locations for setting up facilities, etc. Objective FunctionDefines the goal of the optimization, such as minimizing or maximizing a quantityMathematical function, 𝑓𝑥, used to define the performance measure in terms of decision variablesExample: Maximizing productivity, minimizing costs, minimizing carbon footprint, etc. ConstraintsDefine the limitations or restrictions or conditions to be satisfied by the decision variablesEquality, inequality, non-negative constraintsExample: Storage capacity, maximum employees in a company, minimum and maximum load in a truck, etc. 
+
+=== SLIDE 8 ===
+Basic components in OptimizationParametersFixed numerical inputs that define the problem context but are not decision variablesExample: Distance matrix, resource capacity, etc. Feasible RegionThe set of all possible solutions that satisfy the constraintsExample: All possible transport and routes that can be used without violating constraintsOptimization AlgorithmThe method or technique used to find the best solutionExample: Linear Programming, transportation problem, etc. 
+
+=== SLIDE 9 ===
+Basic components in OptimizationProblem Statement:A delivery truck needs to deliver goods to 5 locations and return while minimizing the total distance travelled. The truck has a maximum capacity of 10 tons, and each location requires a certain delivery weight.Decision variablesRepresent the sequence or route the truck follows to visit the locations. 𝑥௜=Order in which location ’i’ is visited (e.g., x={1,3,4,2,5}).Objective FunctionMinimize the total distance traveled by the truck.Min 𝑓𝑥= Sum of all distances * weightsConstraintsTotal weight that can be carried is 10 tonsEach location must be served only once Start and end points are the same (depot)Non-negativity constraints 
+
+=== SLIDE 10 ===
+Basic components in OptimizationProblem Statement:A delivery truck needs to deliver goods to 5 locations while minimizing the total distance travelled. The truck has a maximum capacity of 10 tons, and each location requires a certain delivery weight.ParametersDistance Matrix (𝒅𝒊𝒋): Predefined distances between all pairs of locations.Weights (𝒘𝒊): Delivery weights required at each location.Feasible RegionThe set of all possible routes that satisfy: i.Capacity constraints.ii.Visiting each location exactly once.iii.Starting and ending at the depot.Optimization AlgorithmMethod: Use Integer Programming to find the optimal routeTools: CPLEX solver, Genetic Algorithm 
+
+
+=== SLIDE 11 ===
+Basic components in Optimization: Objective functionMinimum of  𝒇𝒙is same as maximum of −𝒇𝒙Minimizing an objective function, say Cost is same as Maximizing the opposite of it, which is ProfitSolving a problem either way will fetch the same decision variables (marked as x*)The trajectory or curve of the Objective function exactly mirrors when switching between opposing variables i.e., cost and profit
+
+
+=== SLIDE 12 ===
+Basic components in Optimization: Objective function
+When a constant is multiplied to anObjective function, the decisionvariables remain the same butObjective function is amplifiedWhen a constant is added to anobjective function, there is no effect onthe decision variables or objectivefunction
+
+=== SLIDE 13 ===
+Basic components in Optimization: Constraint surfacesConstraint surfaces in a two-dimensional spaceHatched lines: Infeasible regionBound point: A point that lies on one or more constraint surfaces; the associated constraint is an active constraintFree point: Points that do not lie on any surfaceFour types of points:1.Free and acceptable point2.Free and unacceptable point3.Bound and acceptable point4.Bound and unacceptable point
+
+
+=== SLIDE 14 ===
+Linear Programming Problem (LPP)Analytical technique to optimize (determine the best solution) based on specific objective(s) subject to constraintsReal-world relevance: Structured approach to complex problems in resource allocation, scheduling, portfolio building, and decision-making with large solution spaces Key AssumptionsLinearity: Relationships between variables are linear Deterministic: Parameters are known and constant Additivity: Total effect is the sum of individual contributions Types of solutionAny solution that satisfies the constraints is called feasible solutionA feasible solution that maximizes or minimizes Z is called optimal solution
+
+=== SLIDE 15 ===
+Linear Programming Problem (LPP)General representationOptimize {Minimize or Maximize} theObjective function:ଵଵଶଶ+…+௡௡ଵଶ௡are Parameters/ coefficientsSubject to Constraints ଵଵଵଵଶଶ+…+ଵ௡௡ଵଶଵଵଶଶଶ+…+ଶ௡௡ଶ…௠ଵଵ௠ଶଶ+…+௠௡௡௠ଵ, ଶ,…௡
+Decision Variables:ଵ, ଶ,…௡represent the Decision variables that govern the Objective functionThey are bound to a set of constraints that need to be satisfied
+
+=== SLIDE 16 ===
+Optimization Problem: ExampleProblem:A factory produces two products, chair and table and wants to maximize profit under resource and operational constraints.Objective function: 𝑀𝑎𝑥𝑖𝑚𝑖𝑧𝑒 𝑝𝑟𝑜𝑓𝑖𝑡:  𝑓(𝑥ଵ, 𝑥ଶ) = 40𝑥ଵ+ 50𝑥ଶDecision Variables:𝑥ଵand 𝑥ଶrepresent the units of chairs and tables manufacturedThe coefficients 40 and 50 indicate the profits of selling one unit of chair and table respectivelyThe decision variables are subject to Constraints:Raw Material availability: 𝑥ଵ+ 2𝑥ଶ≤ 100Labour hours: 3𝑥ଵ+ 𝑥ଶ≤ 120Machine capacity:𝑥ଵ< 40Non-negativity: 𝑥ଵ,𝑥ଶ≥0
+
+=== SLIDE 17 ===
+Optimization Problem: ExampleConstraints:Each curve represents a constraint and forms a boundaryFeasible region:The intersection of all constraints forms the feasible region, where all constraints are satisfied simultaneouslyA, B, C, D: Bound acceptable pointsOptimal Solution:Solving g1 and g2, we get the optimal solution as: 𝑥ଵ=28 and 𝑥ଶ=36Indicates the number of chairs and tables to be produced to Maximize profit
+
+
+=== SLIDE 18 ===
+Optimization Problem: Graphical MethodLinear Inequality problemDecision variables: x and yMaximize (Z) = 3x + 4y … (1)Subject to constraints:i.4x + 2y <= 80 … (2)ii.2x + 5y <=180 … (3)iii.x, y >= 0 … (4)The vertex located at the farthest point from the originas theiso-profit lineof the Objective function passesthe feasible region indicates the optimal solution
+
+
+=== SLIDE 19 ===
+Optimization Problem: Graphical MethodIso-profit (Cost) function line methodIso-profit line: Collection of points that give same value of the ZTo determine the slope of the objective function Z = 3x + 4y, bring x to one side and take other quantities to the other sideStep 1: Taking 3x to the other sideStep 2: Dividing by 4 to make the coefficient of y as 1The slope of any line is ‘dy/dx’. From the above equation, the coefficient of ‘x’ will give the slope of the iso-profit line. i.e., -3/4To determine the optimal solution based on the slope of the Objective function (Z)
+
+=== SLIDE 20 ===
+Linear Programming Problem: ExampleProblem:A factory produces two products, chair and table and wants to maximize profit under resource and operational constraints.Decision Variables:𝑥ଵand 𝑥ଶrepresent the units of chairs and tables manufacturedThe coefficients 40 and 50 indicate the profits of selling one unit of chair and table respectivelyObjective function: 𝑀𝑎𝑥𝑖𝑚𝑖𝑧𝑒 𝑝𝑟𝑜𝑓𝑖𝑡:  𝑓(𝑥ଵ, 𝑥ଶ) = 40𝑥ଵ+ 50𝑥ଶThe decision variables are subject to Constraints:Raw Material availability: 𝑥ଵ+ 2𝑥ଶ≤ 100Labour hours: 3𝑥ଵ+ 𝑥ଶ≤ 120Machine capacity:𝑥ଵ< 40Non-negativity: 𝑥ଵ,𝑥ଶ≥0
+
+=== SLIDE 21 ===
+Linear Programming Problem: ExampleConstraints:Each curve represents a constraint and forms a boundaryFeasible region:The area enclosed by the constraints forms the feasible region, where all constraints are satisfied simultaneouslyA, B, C, D: Bound acceptable points
+
+
+=== SLIDE 22 ===
+Linear Programming Problem: ExampleIso-profit Line:The line with a constant value of objective function for various combinations of decision variables.In the present problem, it indicates the number of chairs and tables that yield the same profit.𝟏𝟐𝟏𝟐In a Iso-profit line, ଵଶis a constant, say ‘P’.𝟏𝟐Rearranging the equation in the form , (‘m’ is slope and ‘c’ is intercept) we get 
+Thus, the slope of the Iso-proﬁt line is −0.8
+
+=== SLIDE 23 ===
+Linear Programming Problem: ExampleSlope of the Constraints:Raw Material Availability: slope is -1Labour Hours: slope is -3Machine Capacity: slope is undefined as the line is verticalSlope of Iso-profit line is not equal to slope of any of the constraints. This means that there is only one optimal solution.  Optimal solution will lie on any one corner of the feasible region.Determine the value of Objective function at all the corners by substituting the values of x1 and x2 in the Objective function.We get the optimal solution as x1=28 and x2=36.This is the number of chairs and tables to be produced to Maximize profit
+
+=== SLIDE 24 ===
+Linear Programming ProblemGeneral representationZ = value of overall measure of performance.௝= level of activity ‘j’ (for j = 1, 2, . . . , n).௝= increase in Z that would result from each unit increase in level of activity ‘j’.௜= amount of resource ‘i’ that is available for allocation to activities (for i= 1, 2, . . . , m).௜௝= amount of resource ‘i’ consumed by each unit of activity j.
+Standard Form of the ModelDecision Variables:ଵ,ଶ,…௡Objective function:Maximizeଵଵଶଶ+…+௡௡ଵଶ௡are Parameters/ coefficientsConstraints ଵଵଵଵଶଶ+…+ଵ௡௡ଵଶଵଵଶଶଶ+…+ଶ௡௡ଶ…௠ଵଵ௠ଶଶ+…+௠௡௡௠ଵ, ଶ,…௡
+
+=== SLIDE 25 ===
+Linear Programming ProblemAmount of Resource availableResource usage per unit of activityResource Activityn…21 ଵଵ௡…ଵଶଵଵ1 ଶଶ௡…ଶଶଶଵ2 ……………… ௠௠௡…௠ଶ௠ଵm ௡…ଶଵContribution to Z per unit activity
+
+=== SLIDE 26 ===
+Two-variable LPP: Paint CompanyA paint company produces both interior and exterior paints from two raw materials, M1 and M2.The following table provides the basic data of the problem:Maximum daily availability (tons)Tons of raw material per ton ofInterior paintExterior paint2446Raw material, M1621Raw material, M245Profit per ton ($1000)The daily demand for interior paint cannot exceed that for exterior paint by more than 1 ton.Also, the maximum daily demand for interior paint is 2 tons.Reddy Mikks wants to determine the optimum (best) product mix of interior and exterior paints that maximizes the total daily profit.
+
+=== SLIDE 27 ===
+Two-variable LPP: Paint CompanyDecision variables:we need to determine the daily amounts of exterior and interior paints to be produced.Let x1 and x2 be the decision variables such that: Objective Function:Constraints:Raw Material Constraints:Usage of raw material M1 by both paints =tons/dayUsage of raw material M2 by both paints =tons/day
+
+=== SLIDE 28 ===
+Two-variable LPP: Paint CompanyRaw Material Constraints:The maximum daily availabilities of raw materials M1 and M2 are 24 and 6 tons, respectively.Thus, the raw material constraints are:Raw material M1)Raw material M2)Product Demand:The daily production of interior paint cannot exceed that of exterior paint by more than 1 ton:Market limit)The daily demand of interior paint is 2 tons:(Demand limit)Non-negativity Constraints:
+
+=== SLIDE 29 ===
+Two-variable LPP: Paint CompanyModel Formulation:The Objective of the Model is to by altering the decision variables subject to constraints:
+
+=== SLIDE 30 ===
+Two-variable LPP: Diet ProblemRaw Material Constraints:A farm uses at least 800 lb of special feed daily. The special feed is a mixture of corn andsoybean meal with the following compositions:Cost ($/ lb)lb per lb of feedstuffFibreProtein0.300.020.09Corn0.900.060.60SoybeanThe dietary requirements of the special feed are at least 30% protein and utmost 5% fiber.The goal is to determine the daily minimum-cost feed mix.Decision Variables:Let x1 and x2 be the decision variables such that: x1 = lb of corn in the daily mixx2 = lb of soybean in the daily mix
+
+=== SLIDE 31 ===
+Two-variable LPP: Diet ProblemObjective Function:Constraints:Daily dietary requirements:The farm needs at least 800 lb of feed a day:Protein requirement:The amount of protein included in x1 lb of corn and x2 lb of soybean meal is lb.This quantity should equal at least 30% of the total feed mix lbSimilarly, the Fiber requirement of utmost 5% is:
+
+=== SLIDE 32 ===
+Two-variable LPP: Diet ProblemConstraints:The constraints are simplified by moving the terms in x1 and x2 to the left-hand side(Protein requirement)(Fibre requirement)Model Formulation:The Objective of the Model is to by altering the decision variables and that represent lb of corn and soybean in the daily mix respectively, subject to constraints:
+
+=== SLIDE 33 ===
+Two-variable LPP: Single-period ProductionIn preparation for the winter season, a clothing company is manufacturing parka and gooseovercoats, insulated pants, and gloves. All products are manufactured across four differentdepartments: cutting, insulating, sewing, and packaging. The company has received firm ordersfor its products. The contract stipulates a penalty for undelivered items. Devise an optimalproduction plan:Capacity (hr)Time per unit (hr)DepartmentGlovesPantsGooseParka10000.150.250.300.30Cutting10000.100.300.350.25Insulating10000.220.400.500.45Sewing10000.050.100.150.15Packaging500600750800Demand10204030Unit profit ($)8102015Unit penalty ($)
+
+=== SLIDE 34 ===
+Two-variable LPP: Single-period ProductionDecision Variables:Objective function:Total penalty:where s1, s2, s3, and s4 indicate the shortages of parka and goose overcoats, insulated pants, and gloves respectively. 
+
+=== SLIDE 35 ===
+Two-variable LPP: Single-period ProductionConstraints:Capacity constraint:0000Penalty constraint:Non-negativity constraints:
+
+=== SLIDE 36 ===
+Two-variable LPP: Single-period ProductionModel Formulation:The Objective of the Model is toby altering the decision variables x1, x2, x3, and x4 that indicate thenumber of parka and goose overcoats, insulated pants, and gloves respectively, subject toconstraints:0000
+
+=== SLIDE 37 ===
+Two-variable LPP: Wyndor Glass Co.The WYNDOR GLASS CO. produces high-quality glass products, including windows and glass doors. It has threeplants. Aluminum frames are made in Plant 1, wood frames are made in Plant 2, and Plant 3 produces the glassand assembles the products. Because of declining earnings, top management has decided to revamp thecompany’s product line. Unprofitable products are being discontinued, releasing production capacity to launchtwo new products having large sales potential:Product 1:An 8-foot glass door with aluminum framingProduct 2:A 4*6 foot double-hung wood-framed windowProduct 1 requires some of the production capacity in Plants 1 and 3, but none in Plant 2. Product 2 needs onlyPlants 2 and 3. The marketing division has concluded that the company could sell as much of either product ascould be produced by these plants. However, because both products would be competing for the sameproduction capacity in Plant 3, it is not clear which mix of the two products would be most profitable. Therefore,an OR team has been formed to study this question.
+
+=== SLIDE 38 ===
+Two-variable LPP: Wyndor Glass Co.Production time available per week(hours)Production time per batch (hours)PlantProduct 2Product 14011 12202 18233 50003000Profit per batch ($) Problem formulation:Decision variables:Objective Function:
+
+=== SLIDE 39 ===
+Two-variable LPP: Wyndor Glass Co.Constraints:
+Model Formulation:The Objective of the Model is toby altering the decision variablesnumber of batches of products 1 and 2 produced per weekrespectively, subject to constraints:
+
+=== SLIDE 40 ===
+Two-variable LPP: Reddy MikksReddy Mikks produces both interior and exterior paints from two raw materials, M1 and M2.The following table provides the basic data of the problem:Maximum daily availability (tons)Tons of raw material per ton ofInterior paintExterior paint2446Raw material, M1621Raw material, M245Profit per ton ($1000)The daily demand for interior paint cannot exceed that for exterior paint by more than 1 ton.Also, the maximum daily demand for interior paint is 2 tons.Reddy Mikks wants to determine the optimum (best) product mix of interior and exterior paints that maximizes the total daily profit.
+
+=== SLIDE 41 ===
+Two-variable LPP: Reddy MikksDecision variables:We need to determine the daily amounts of exterior and interior paints to be produced.Let x1 and x2 be the decision variables such that: Objective Function:Constraints:Raw Material Constraints:Usage of raw material M1 by both paints =tons/dayUsage of raw material M2 by both paints =tons/day
+
+=== SLIDE 42 ===
+Two-variable LPP: Reddy MikksRaw Material Constraints:The maximum daily availabilities of raw materials M1 and M2 are 24 and 6 tons, respectively.Thus, the raw material constraints are:Raw material M1)Raw material M2)Product Demand:The daily production of interior paint cannot exceed that of exterior paint by more than 1 ton:Market limit)The daily demand of interior paint is 2 tons:(Demand limit)Non-negativity Constraints:
+
+=== SLIDE 43 ===
+Two-variable LPP: Reddy MikksModel Formulation:The Objective of the Model is to by altering the decision variables subject to constraints:
+ExcelExcel
+
+=== SLIDE 44 ===
+Two-variable LPP: Furniture CompanyA furniture company produces chairs and tables. Each chair requires 2 hours of carpentry and 1 hour of painting. Each table requires 3 hours of carpentry and 2 hours of painting. The company has a maximum of 60 hours for carpentry and 40 hours for painting per week. The profit on a chair is $30, and on a table is $50. How many chairs and tables should the company produce to maximize profit?Decision Variables:Objective Function: Constraints: Carpentry hours available:
+
+=== SLIDE 45 ===
+Two-variable LPP: Furniture CompanyPainting hours available:Non-negativity:Model Formulation:The objective of the model is to by determiningthe optimal number of chairs (x1 ) and tables (x2 ) produced per week, subject to the constraints:
+ExcelExcel
+
+=== SLIDE 46 ===
+Two-variable LPP: Transportation Problem A company has two warehouses (W1, W2) and three distribution centers (D1, D2, D3). The costto transport a unit from each warehouse to each center is provided below. The supply at W1 is100 units and W2 is 120 units. The demand at D1, D2, and D3 is 80, 90, and 50 units, respectively.Minimize the transportation cost.D3D2D1864W1 345W2Decision Variables:, where:
+
+=== SLIDE 47 ===
+Two-variable LPP: Transportation Problem Objective Function: Constraints:Supply Constraints:Demand Constraints:Non-negativity:
+
+=== SLIDE 48 ===
+Two-variable LPP: Transportation Problem 
+ExcelExcel
+Model formulation:The objective of the model is to bydetermining the optimal number of units transported (xij ) from each warehouse to eachdistribution center, subject to:
+
+=== SLIDE 49 ===
+Two-variable LPP: Workforce SchedulingA factory operates 7 days a week and requires a minimum number of workers each day. Workerswork for 5 consecutive days and then take 2 days off. Minimize the number of workers whilemeeting daily requirements.SunSatFriThuWedTueMonDay 6985676Workers NeededUnderstanding the Problem:i. Each worker starts work on a particular day () and continues to work for the next 4 days.ii. For each day, the total workers available are the sum of workers who started their 5-daywork cycle on the previous 4 days and those who started on that specific day.iii. The objective is to ensure that the number of workers available meets or exceeds the dailyrequirement for each day.
+
+=== SLIDE 50 ===
+Two-variable LPP: Workforce SchedulingDecision variables:𝐱𝟏 =  𝐍𝐮𝐦𝐛𝐞𝐫 𝐨𝐟 𝐰𝐨𝐫𝐤𝐞𝐫𝐬 𝐬𝐭𝐚𝐫𝐭𝐢𝐧𝐠 𝐨𝐧 𝐌𝐨𝐧𝐝𝐚𝐲𝐱𝟐 =  𝐍𝐮𝐦𝐛𝐞𝐫 𝐨𝐟 𝐰𝐨𝐫𝐤𝐞𝐫𝐬 𝐬𝐭𝐚𝐫𝐭𝐢𝐧𝐠 𝐨𝐧 𝐓𝐮𝐞𝐬𝐝𝐚𝐲𝐱𝟑 =  𝐍𝐮𝐦𝐛𝐞𝐫 𝐨𝐟 𝐰𝐨𝐫𝐤𝐞𝐫𝐬 𝐬𝐭𝐚𝐫𝐭𝐢𝐧𝐠 𝐨𝐧 𝐖𝐞𝐝𝐧𝐞𝐬𝐝𝐚𝐲𝐱𝟒 =  𝐍𝐮𝐦𝐛𝐞𝐫 𝐨𝐟 𝐰𝐨𝐫𝐤𝐞𝐫𝐬 𝐬𝐭𝐚𝐫𝐭𝐢𝐧𝐠 𝐨𝐧 𝐓𝐡𝐮𝐫𝐬𝐝𝐚𝐲𝐱𝟓 =  𝐍𝐮𝐦𝐛𝐞𝐫 𝐨𝐟 𝐰𝐨𝐫𝐤𝐞𝐫𝐬 𝐬𝐭𝐚𝐫𝐭𝐢𝐧𝐠 𝐨𝐧 𝐅𝐫𝐢𝐝𝐚𝐲𝐱𝟔 =  𝐍𝐮𝐦𝐛𝐞𝐫 𝐨𝐟 𝐰𝐨𝐫𝐤𝐞𝐫𝐬 𝐬𝐭𝐚𝐫𝐭𝐢𝐧𝐠 𝐨𝐧 𝐒𝐚𝐭𝐮𝐫𝐝𝐚𝐲𝐱𝟕 =  𝐍𝐮𝐦𝐛𝐞𝐫 𝐨𝐟 𝐰𝐨𝐫𝐤𝐞𝐫𝐬 𝐬𝐭𝐚𝐫𝐭𝐢𝐧𝐠 𝐨𝐧 𝐒𝐮𝐧𝐝𝐚𝐲Objective Function:𝐌𝐢𝐧𝐢𝐦𝐢𝐳𝐞 𝐙 = 𝐱𝟏 + 𝐱𝟐 + 𝐱𝟑 + 𝐱𝟒 + 𝐱𝟓 + 𝐱𝟔 + 𝐱𝟕Worker coverage for each day:i. Workers starting on Monday would work on Monday and the next four days.ii. Monday is the 1st, 2nd, 3rd, 4th, and 5thworking day for workers who started on Monday, Sunday,Saturday, Friday, and Thursday, respectively. Similar logic for all the days.
+
+=== SLIDE 51 ===
+Two-variable LPP: Workforce SchedulingConstraints: Worker coverage for each day:Workers working on Monday can be written as:Similarly, for other days:
+Non-negativity constraints:
+
+=== SLIDE 52 ===
+Two-variable LPP: Workforce SchedulingModel Formulation:The objective of the model is to bydetermining the optimal number of workers starting on each day (xi ) to meet the daily workforcerequirements while minimizing the total number of workers:
+ExcelExcel
+
+=== SLIDE 53 ===
+Thank You
+
