@@ -8618,4 +8618,7 @@ final_html = f"""<!DOCTYPE html>
 with open("app.html","w",encoding="utf-8") as f:
     f.write(final_html)
 
-print("DONE - app.html with SVG network diagrams generated successfully!")
+with open("index.html","w",encoding="utf-8") as f:
+    f.write(final_html)
+
+print("DONE - Both index.html and app.html generated successfully!")
