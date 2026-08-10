@@ -8,67 +8,1157 @@ print("Building OR Hub with SVG Network Diagrams for SP and MST...")
 # ─────────────────────────────────────────────────────────────────────────────
 lpp_problems = [
     {
-        "id": "lpp_1", "title": "1. Reddy Mikks Paint Production Optimization",
-        "difficulty": "easy", "tags": ["product-mix", "graphical-method"],
-        "context": "Reddy Mikks produces exterior and interior paints from two raw materials M1 and M2. Maximum daily availabilities: M1=24 tons, M2=6 tons. Profit: $5000/ton exterior, $4000/ton interior. Demand constraint: interior paint cannot exceed exterior by more than 1 ton. Max interior demand = 2 tons.",
+        "id": "lpp_1",
+        "title": "1. Reddy Mikks Paint Production Optimization",
+        "difficulty": "easy",
+        "tags": [
+            "product-mix",
+            "graphical-method"
+        ],
+        "context": "Reddy Mikks produces exterior and interior paints from two raw materials M1 and M2 with daily capacities of 24 tons and 6 tons respectively. Exterior paint yields $5,000/ton profit while interior paint yields $4,000/ton. A market survey restricts daily interior paint production to at most 1 ton more than exterior paint and caps total interior demand at 2 tons per day.",
         "steps": [
-            {"title": "Decision Variables Definition", "explain": "Define daily production amounts of paints in tons.", "formulation": "Let x\u2081 = daily amount of exterior paint produced (tons)\nLet x\u2082 = daily amount of interior paint produced (tons)"},
-            {"title": "Objective Function Formulation", "explain": "Maximize total daily profit in thousands of dollars.", "formulation": "Maximize Z = 5x\u2081 + 4x\u2082\n\nWhere:\n  5 = profit per ton of exterior paint ($1000s)\n  4 = profit per ton of interior paint ($1000s)"},
-            {"title": "Constraints Formulation", "explain": "Formulate raw material availability and market limit constraints.", "formulation": "Subject to:\n  6x\u2081 + 4x\u2082 \u2264 24   (Raw material M1 constraint)\n   x\u2081 + 2x\u2082 \u2264  6   (Raw material M2 constraint)\n  x\u2082 - x\u2081 \u2264  1   (Market limit: interior \u2264 exterior + 1)\n        x\u2082 \u2264  2   (Demand limit: max interior paint)\n  x\u2081, x\u2082 \u2265 0      (Non-negativity constraints)"},
-            {"title": "Graphical Corner Point Evaluation", "explain": "Evaluate objective function Z at all feasible vertices O, A, B, C, D, E.", "body": "<div class=\"table-wrap\"><table class=\"ppt-table\"><thead><tr><th>Corner Point</th><th>x\u2081 (Exterior)</th><th>x\u2082 (Interior)</th><th>Z = 5x\u2081 + 4x\u2082 ($1000s)</th></tr></thead><tbody><tr><td>O (Origin)</td><td>0</td><td>0</td><td>0</td></tr><tr><td>A (M1 x-intercept)</td><td>4</td><td>0</td><td>20</td></tr><tr><td>B (M1 \u2229 M2)</td><td>3.33</td><td>1.33</td><td class=\"opt\">21.98 (Optimal)</td></tr><tr><td>C (M1 \u2229 Market limit)</td><td>3</td><td>1.5</td><td>21</td></tr><tr><td>D (M2 \u2229 Demand limit)</td><td>2</td><td>2</td><td>18</td></tr><tr><td>E (Demand limit y-intercept)</td><td>0</td><td>2</td><td>8</td></tr></tbody></table></div>"},
-            {"title": "Optimal Production Plan", "explain": "Intersection of binding constraints M1 and M2 yields optimal point B.", "body": "<div class=\"res-box\"><h4>\u2705 Optimal Production Plan</h4><ul><li>Exterior Paint (x\u2081) = <strong>3.33 tons/day</strong></li><li>Interior Paint (x\u2082) = <strong>1.33 tons/day</strong></li><li><strong>Maximum Daily Profit Z = $21,333</strong></li></ul></div>"}
+            {
+                "title": "Decision Variables Definition",
+                "explain": "Define daily production amounts of paints in tons.",
+                "formulation": "Let x\u2081 = daily amount of exterior paint produced (tons)\nLet x\u2082 = daily amount of interior paint produced (tons)"
+            },
+            {
+                "title": "Objective Function Formulation",
+                "explain": "Maximize total daily profit in thousands of dollars.",
+                "formulation": "Maximize Z = 5x\u2081 + 4x\u2082\n\nWhere:\n  5 = profit per ton of exterior paint ($1000s)\n  4 = profit per ton of interior paint ($1000s)"
+            },
+            {
+                "title": "Constraints Formulation",
+                "explain": "Formulate raw material availability and market limit constraints.",
+                "formulation": "Subject to:\n  6x\u2081 + 4x\u2082 \u2264 24   (Raw material M1 constraint)\n   x\u2081 + 2x\u2082 \u2264  6   (Raw material M2 constraint)\n  x\u2082 - x\u2081 \u2264  1   (Market limit: interior \u2264 exterior + 1)\n        x\u2082 \u2264  2   (Demand limit: max interior paint)\n  x\u2081, x\u2082 \u2265 0      (Non-negativity constraints)"
+            },
+            {
+                "title": "Graphical Corner Point Evaluation",
+                "explain": "Evaluate objective function Z at all feasible vertices O, A, B, C, D, E.",
+                "body": "<div class=\"table-wrap\"><table class=\"ppt-table\"><thead><tr><th>Corner Point</th><th>x\u2081 (Exterior)</th><th>x\u2082 (Interior)</th><th>Z = 5x\u2081 + 4x\u2082 ($1000s)</th></tr></thead><tbody><tr><td>O (Origin)</td><td>0</td><td>0</td><td>0</td></tr><tr><td>A (M1 x-intercept)</td><td>4</td><td>0</td><td>20</td></tr><tr><td>B (M1 \u2229 M2)</td><td>3.33</td><td>1.33</td><td class=\"opt\">21.98 (Optimal)</td></tr><tr><td>C (M1 \u2229 Market limit)</td><td>3</td><td>1.5</td><td>21</td></tr><tr><td>D (M2 \u2229 Demand limit)</td><td>2</td><td>2</td><td>18</td></tr><tr><td>E (Demand limit y-intercept)</td><td>0</td><td>2</td><td>8</td></tr></tbody></table></div>"
+            },
+            {
+                "title": "Optimal Production Plan",
+                "explain": "Intersection of binding constraints M1 and M2 yields optimal point B.",
+                "body": "<div class=\"res-box\"><h4>\u2705 Optimal Production Plan</h4><ul><li>Exterior Paint (x\u2081) = <strong>3.33 tons/day</strong></li><li>Interior Paint (x\u2082) = <strong>1.33 tons/day</strong></li><li><strong>Maximum Daily Profit Z = $21,980</strong></li></ul></div>"
+            }
+        ],
+        "graph": {
+            "type": "max",
+            "c1": 5,
+            "c2": 4,
+            "maxX1": 6,
+            "maxX2": 4,
+            "constraints": [
+                {
+                    "a1": 6,
+                    "a2": 4,
+                    "b": 24,
+                    "dir": "<=",
+                    "label": "6x\u2081 + 4x\u2082 \u2264 24 (M1)",
+                    "color": "#ef4444"
+                },
+                {
+                    "a1": 1,
+                    "a2": 2,
+                    "b": 6,
+                    "dir": "<=",
+                    "label": "x\u2081 + 2x\u2082 \u2264 6 (M2)",
+                    "color": "#3b82f6"
+                },
+                {
+                    "a1": -1,
+                    "a2": 1,
+                    "b": 1,
+                    "dir": "<=",
+                    "label": "-x\u2081 + x\u2082 \u2264 1 (Market)",
+                    "color": "#8b5cf6"
+                },
+                {
+                    "a1": 0,
+                    "a2": 1,
+                    "b": 2,
+                    "dir": "<=",
+                    "label": "x\u2082 \u2264 2 (Demand)",
+                    "color": "#f59e0b"
+                }
+            ],
+            "corners": [
+                {
+                    "label": "O",
+                    "x1": 0,
+                    "x2": 0,
+                    "z": 0,
+                    "isOpt": False
+                },
+                {
+                    "label": "A",
+                    "x1": 4,
+                    "x2": 0,
+                    "z": 20,
+                    "isOpt": False
+                },
+                {
+                    "label": "B",
+                    "x1": 3.33,
+                    "x2": 1.33,
+                    "z": 21.98,
+                    "isOpt": True
+                },
+                {
+                    "label": "C",
+                    "x1": 3,
+                    "x2": 1.5,
+                    "z": 21,
+                    "isOpt": False
+                },
+                {
+                    "label": "D",
+                    "x1": 1,
+                    "x2": 2,
+                    "z": 13,
+                    "isOpt": False
+                },
+                {
+                    "label": "E",
+                    "x1": 0,
+                    "x2": 1,
+                    "z": 4,
+                    "isOpt": False
+                }
+            ]
+        }
+    },
+    {
+        "id": "lpp_2",
+        "title": "2. Wyndor Glass Product Line Revamp",
+        "difficulty": "easy",
+        "tags": [
+            "product-mix",
+            "plant-capacity"
+        ],
+        "context": "Wyndor Glass Co. plans to launch two innovative product lines: glass doors with aluminum frames (Product 1, $3,000 profit/batch) and wood-framed windows (Product 2, $5,000 profit/batch). Production requires processing across three specialized plants with limited weekly working capacities of 4 hours at Plant 1, 12 hours at Plant 2, and 18 hours at Plant 3. Management needs an optimal product mix to maximize weekly operating profits while honoring plant limits.",
+        "steps": [
+            {
+                "title": "Decision Variables",
+                "explain": "Batches produced per week.",
+                "formulation": "Let x\u2081 = number of batches of Product 1 produced per week\nLet x\u2082 = number of batches of Product 2 produced per week"
+            },
+            {
+                "title": "Objective Function",
+                "explain": "Maximize total weekly profit in $1000s.",
+                "formulation": "Maximize Z = 3x\u2081 + 5x\u2082"
+            },
+            {
+                "title": "Constraints",
+                "explain": "Weekly hours available at Plants 1, 2, and 3.",
+                "formulation": "Subject to:\n   x\u2081      \u2264  4   (Plant 1 capacity)\n        2x\u2082 \u2264 12   (Plant 2 capacity)\n  3x\u2081 + 2x\u2082 \u2264 18   (Plant 3 capacity)\n  x\u2081, x\u2082 \u2265 0"
+            },
+            {
+                "title": "Corner Point Evaluation",
+                "explain": "Evaluate Z at all feasible vertices.",
+                "body": "<div class=\"table-wrap\"><table class=\"ppt-table\"><thead><tr><th>Corner Point</th><th>x\u2081</th><th>x\u2082</th><th>Z = 3x\u2081 + 5x\u2082</th></tr></thead><tbody><tr><td>O</td><td>0</td><td>0</td><td>0</td></tr><tr><td>A</td><td>4</td><td>0</td><td>12</td></tr><tr><td>B</td><td>4</td><td>3</td><td>27</td></tr><tr><td>C</td><td>2</td><td>6</td><td class=\"opt\">36 (Optimal)</td></tr><tr><td>D</td><td>0</td><td>6</td><td>30</td></tr></tbody></table></div>"
+            },
+            {
+                "title": "Optimal Solution",
+                "explain": "Maximum profit occurs at point C.",
+                "body": "<div class=\"res-box\"><h4>\u2705 Optimal Product Mix</h4><ul><li>Product 1 = <strong>2 batches/week</strong></li><li>Product 2 = <strong>6 batches/week</strong></li><li><strong>Maximum Weekly Profit = $36,000</strong></li></ul></div>"
+            }
+        ],
+        "graph": {
+            "type": "max",
+            "c1": 3,
+            "c2": 5,
+            "maxX1": 6,
+            "maxX2": 8,
+            "constraints": [
+                {
+                    "a1": 1,
+                    "a2": 0,
+                    "b": 4,
+                    "dir": "<=",
+                    "label": "x\u2081 \u2264 4 (Plant 1)",
+                    "color": "#ef4444"
+                },
+                {
+                    "a1": 0,
+                    "a2": 2,
+                    "b": 12,
+                    "dir": "<=",
+                    "label": "2x\u2082 \u2264 12 (Plant 2)",
+                    "color": "#3b82f6"
+                },
+                {
+                    "a1": 3,
+                    "a2": 2,
+                    "b": 18,
+                    "dir": "<=",
+                    "label": "3x\u2081 + 2x\u2082 \u2264 18 (Plant 3)",
+                    "color": "#10b981"
+                }
+            ],
+            "corners": [
+                {
+                    "label": "O",
+                    "x1": 0,
+                    "x2": 0,
+                    "z": 0,
+                    "isOpt": False
+                },
+                {
+                    "label": "A",
+                    "x1": 4,
+                    "x2": 0,
+                    "z": 12,
+                    "isOpt": False
+                },
+                {
+                    "label": "B",
+                    "x1": 4,
+                    "x2": 3,
+                    "z": 27,
+                    "isOpt": False
+                },
+                {
+                    "label": "C",
+                    "x1": 2,
+                    "x2": 6,
+                    "z": 36,
+                    "isOpt": True
+                },
+                {
+                    "label": "D",
+                    "x1": 0,
+                    "x2": 6,
+                    "z": 30,
+                    "isOpt": False
+                }
+            ]
+        }
+    },
+    {
+        "id": "lpp_3",
+        "title": "3. 7-Day Workforce Shift Scheduling",
+        "difficulty": "hard",
+        "tags": [
+            "workforce-scheduling",
+            "integer-lpp"
+        ],
+        "context": "A 24/7 industrial manufacturing facility operates continuously across all seven days of the week with varying daily staffing demands ranging from 11 workers on Sunday to 19 workers on Thursday. Each full-time employee works 5 consecutive days followed by 2 mandatory days off to ensure fatigue compliance. The plant manager must formulate an integer linear programming schedule to minimize total headcount while fulfilling daily shift coverage.",
+        "steps": [
+            {
+                "title": "Decision Variables",
+                "explain": "x_i = workers starting 5-day shift on day i.",
+                "formulation": "Let x\u2081=Mon start, x\u2082=Tue, x\u2083=Wed, x\u2084=Thu, x\u2085=Fri, x\u2086=Sat, x\u2087=Sun"
+            },
+            {
+                "title": "Objective Function",
+                "explain": "Minimize total workers hired.",
+                "formulation": "Minimize Z = x\u2081 + x\u2082 + x\u2083 + x\u2084 + x\u2085 + x\u2086 + x\u2087"
+            },
+            {
+                "title": "Daily Coverage Constraints",
+                "explain": "Each day must have enough workers on duty.",
+                "formulation": "Subject to:\n  x\u2081+x\u2084+x\u2085+x\u2086+x\u2087 \u2265 17  (Mon)\n  x\u2081+x\u2082+x\u2085+x\u2086+x\u2087 \u2265 13  (Tue)\n  x\u2081+x\u2082+x\u2083+x\u2086+x\u2087 \u2265 15  (Wed)\n  x\u2081+x\u2082+x\u2083+x\u2084+x\u2087 \u2265 19  (Thu)\n  x\u2081+x\u2082+x\u2083+x\u2084+x\u2085 \u2265 14  (Fri)\n  x\u2082+x\u2083+x\u2084+x\u2085+x\u2086 \u2265 16  (Sat)\n  x\u2083+x\u2084+x\u2085+x\u2086+x\u2087 \u2265 11  (Sun)\n  x_i \u2265 0, integer"
+            },
+            {
+                "title": "Optimal Hiring Schedule",
+                "explain": "Integer LPP optimal solution.",
+                "body": "<div class=\"res-box\"><h4>\u2705 Optimal Hiring Schedule</h4><ul><li>x\u2081=4, x\u2082=8, x\u2083=2, x\u2084=6, x\u2085=0, x\u2086=3, x\u2087=0</li><li><strong>Minimum Total Workforce = 23 workers</strong></li></ul></div>"
+            }
         ]
     },
     {
-        "id": "lpp_2", "title": "2. Wyndor Glass Product Line Revamp",
-        "difficulty": "easy", "tags": ["product-mix", "plant-capacity"],
-        "context": "Wyndor Glass Co. produces Product 1 (glass door with aluminum frame, profit $3000/batch) and Product 2 (wood-framed window, profit $5000/batch). Plant capacities per week: Plant 1=4 hrs, Plant 2=12 hrs, Plant 3=18 hrs.",
+        "id": "lpp_4",
+        "title": "4. Furniture Production (Carpentry & Painting)",
+        "difficulty": "medium",
+        "tags": [
+            "lpp",
+            "product-mix"
+        ],
+        "context": "A custom furniture workshop manufactures dining tables (yielding $6 profit each) and ergonomic chairs (yielding $8 profit each) using shared carpentry and painting workshops. Available monthly shop capacities are strictly capped at 48 hours for carpentry and 20 hours for painting. The plant supervisor needs to determine the exact monthly production quantities of tables and chairs to maximize net workshop returns.",
         "steps": [
-            {"title": "Decision Variables", "explain": "Batches produced per week.", "formulation": "Let x\u2081 = number of batches of Product 1 produced per week\nLet x\u2082 = number of batches of Product 2 produced per week"},
-            {"title": "Objective Function", "explain": "Maximize total weekly profit in $1000s.", "formulation": "Maximize Z = 3x\u2081 + 5x\u2082"},
-            {"title": "Constraints", "explain": "Weekly hours available at Plants 1, 2, and 3.", "formulation": "Subject to:\n   x\u2081      \u2264  4   (Plant 1 capacity)\n        2x\u2082 \u2264 12   (Plant 2 capacity)\n  3x\u2081 + 2x\u2082 \u2264 18   (Plant 3 capacity)\n  x\u2081, x\u2082 \u2265 0"},
-            {"title": "Corner Point Evaluation", "explain": "Evaluate Z at all feasible vertices.", "body": "<div class=\"table-wrap\"><table class=\"ppt-table\"><thead><tr><th>Corner Point</th><th>x\u2081</th><th>x\u2082</th><th>Z = 3x\u2081 + 5x\u2082</th></tr></thead><tbody><tr><td>O</td><td>0</td><td>0</td><td>0</td></tr><tr><td>A</td><td>4</td><td>0</td><td>12</td></tr><tr><td>B</td><td>4</td><td>3</td><td>27</td></tr><tr><td>C</td><td>2</td><td>6</td><td class=\"opt\">36 (Optimal)</td></tr><tr><td>D</td><td>0</td><td>6</td><td>30</td></tr></tbody></table></div>"},
-            {"title": "Optimal Solution", "explain": "Maximum profit occurs at point C.", "body": "<div class=\"res-box\"><h4>\u2705 Optimal Product Mix</h4><ul><li>Product 1 = <strong>2 batches/week</strong></li><li>Product 2 = <strong>6 batches/week</strong></li><li><strong>Maximum Weekly Profit = $36,000</strong></li></ul></div>"}
+            {
+                "title": "Decision Variables",
+                "explain": "Tables (x1) and Chairs (x2) produced.",
+                "formulation": "Let x\u2081 = number of tables produced\nLet x\u2082 = number of chairs produced"
+            },
+            {
+                "title": "Objective Function & Constraints",
+                "explain": "Maximize total profit.",
+                "formulation": "Maximize Z = 6x\u2081 + 8x\u2082\nSubject to:\n  3x\u2081 + 2x\u2082 \u2264 48 (Carpentry)\n   x\u2081 + 2x\u2082 \u2264 20 (Painting)\n  x\u2081, x\u2082 \u2265 0"
+            },
+            {
+                "title": "Optimal Solution",
+                "explain": "Corner point evaluation.",
+                "body": "<div class='res-box'><h4>\u2705 Optimal Plan</h4><ul><li>Tables (x\u2081) = <strong>14</strong></li><li>Chairs (x\u2082) = <strong>3</strong></li><li><strong>Maximum Profit = $108</strong></li></ul></div>"
+            }
+        ],
+        "graph": {
+            "type": "max",
+            "c1": 6,
+            "c2": 8,
+            "maxX1": 20,
+            "maxX2": 15,
+            "constraints": [
+                {
+                    "a1": 3,
+                    "a2": 2,
+                    "b": 48,
+                    "dir": "<=",
+                    "label": "3x\u2081 + 2x\u2082 \u2264 48 (Carpentry)",
+                    "color": "#ef4444"
+                },
+                {
+                    "a1": 1,
+                    "a2": 2,
+                    "b": 20,
+                    "dir": "<=",
+                    "label": "x\u2081 + 2x\u2082 \u2264 20 (Painting)",
+                    "color": "#3b82f6"
+                }
+            ],
+            "corners": [
+                {
+                    "label": "O",
+                    "x1": 0,
+                    "x2": 0,
+                    "z": 0,
+                    "isOpt": False
+                },
+                {
+                    "label": "A",
+                    "x1": 16,
+                    "x2": 0,
+                    "z": 96,
+                    "isOpt": False
+                },
+                {
+                    "label": "B",
+                    "x1": 14,
+                    "x2": 3,
+                    "z": 108,
+                    "isOpt": True
+                },
+                {
+                    "label": "C",
+                    "x1": 0,
+                    "x2": 10,
+                    "z": 80,
+                    "isOpt": False
+                }
+            ]
+        }
+    },
+    {
+        "id": "lpp_5",
+        "title": "5. Farm Feed Diet Cost Minimization",
+        "difficulty": "medium",
+        "tags": [
+            "lpp",
+            "diet-problem"
+        ],
+        "context": "A commercial livestock feed manufacturer blends natural grain ($2 per bag) and processed soybean meal ($3 per bag) to formulate a daily cattle diet. The nutritional blend must contain at least 90 units of crude protein and 30 units of dietary fat per batch to maintain livestock health. The operations nutritionist needs to determine the minimum-cost blending ratio that fully satisfies all dietary constraints.",
+        "steps": [
+            {
+                "title": "Decision Variables",
+                "explain": "Grain (x1) and Soybean (x2) bags.",
+                "formulation": "Let x\u2081 = bags of grain\nLet x\u2082 = bags of soybean"
+            },
+            {
+                "title": "Objective Function & Constraints",
+                "explain": "Minimize feed cost.",
+                "formulation": "Minimize Z = 2x\u2081 + 3x\u2082\nSubject to:\n  3x\u2081 + 5x\u2082 \u2265 90 (Protein requirement)\n   x\u2081 +  x\u2082 \u2265 30 (Fat requirement)\n  x\u2081, x\u2082 \u2265 0"
+            },
+            {
+                "title": "Optimal Solution",
+                "explain": "Corner point evaluation for minimization.",
+                "body": "<div class='res-box'><h4>\u2705 Optimal Plan</h4><ul><li>Grain (x\u2081) = <strong>30 bags</strong></li><li>Soybean (x\u2082) = <strong>0 bags</strong></li><li><strong>Minimum Feed Cost = $60</strong></li></ul></div>"
+            }
+        ],
+        "graph": {
+            "type": "min",
+            "c1": 2,
+            "c2": 3,
+            "maxX1": 40,
+            "maxX2": 35,
+            "constraints": [
+                {
+                    "a1": 3,
+                    "a2": 5,
+                    "b": 90,
+                    "dir": ">=",
+                    "label": "3x\u2081 + 5x\u2082 \u2265 90 (Protein)",
+                    "color": "#ef4444"
+                },
+                {
+                    "a1": 1,
+                    "a2": 1,
+                    "b": 30,
+                    "dir": ">=",
+                    "label": "x\u2081 + x\u2082 \u2265 30 (Fat)",
+                    "color": "#3b82f6"
+                }
+            ],
+            "corners": [
+                {
+                    "label": "A",
+                    "x1": 0,
+                    "x2": 30,
+                    "z": 90,
+                    "isOpt": False
+                },
+                {
+                    "label": "B",
+                    "x1": 15,
+                    "x2": 15,
+                    "z": 75,
+                    "isOpt": False
+                },
+                {
+                    "label": "C",
+                    "x1": 30,
+                    "x2": 0,
+                    "z": 60,
+                    "isOpt": True
+                }
+            ]
+        }
+    },
+    {
+        "id": "lpp_6",
+        "title": "6. Clothing Production (Parkas & Overcoats)",
+        "difficulty": "medium",
+        "tags": [
+            "lpp",
+            "garment"
+        ],
+        "context": "An outdoor apparel manufacturer produces premium leather parkas (profit $30/unit) and insulated overcoats (profit $50/unit) from high-grade leather stock. Total raw leather availability is constrained to 40 square feet per batch, with parkas requiring 1 sq ft and overcoats requiring 2 sq ft. Seasonal market demand caps maximum production at 20 parkas and 15 overcoats, requiring an optimal batch decision.",
+        "steps": [
+            {
+                "title": "Decision Variables",
+                "explain": "Parkas (x1) and Overcoats (x2).",
+                "formulation": "Let x\u2081 = number of parkas\nLet x\u2082 = number of overcoats"
+            },
+            {
+                "title": "Objective Function & Constraints",
+                "explain": "Maximize total profit.",
+                "formulation": "Maximize Z = 30x\u2081 + 50x\u2082\nSubject to:\n  x\u2081 + 2x\u2082 \u2264 40 (Leather limit)\n  x\u2081       \u2264 20 (Parka demand)\n       x\u2082 \u2264 15 (Overcoat demand)\n  x\u2081, x\u2082 \u2265 0"
+            },
+            {
+                "title": "Optimal Solution",
+                "explain": "Corner point evaluation.",
+                "body": "<div class='res-box'><h4>\u2705 Optimal Plan</h4><ul><li>Parkas (x\u2081) = <strong>20</strong></li><li>Overcoats (x\u2082) = <strong>10</strong></li><li><strong>Maximum Profit = $1,100</strong></li></ul></div>"
+            }
+        ],
+        "graph": {
+            "type": "max",
+            "c1": 30,
+            "c2": 50,
+            "maxX1": 25,
+            "maxX2": 20,
+            "constraints": [
+                {
+                    "a1": 1,
+                    "a2": 2,
+                    "b": 40,
+                    "dir": "<=",
+                    "label": "x\u2081 + 2x\u2082 \u2264 40 (Leather)",
+                    "color": "#ef4444"
+                },
+                {
+                    "a1": 1,
+                    "a2": 0,
+                    "b": 20,
+                    "dir": "<=",
+                    "label": "x\u2081 \u2264 20 (Parka Limit)",
+                    "color": "#3b82f6"
+                },
+                {
+                    "a1": 0,
+                    "a2": 1,
+                    "b": 15,
+                    "dir": "<=",
+                    "label": "x\u2082 \u2264 15 (Overcoat Limit)",
+                    "color": "#10b981"
+                }
+            ],
+            "corners": [
+                {
+                    "label": "O",
+                    "x1": 0,
+                    "x2": 0,
+                    "z": 0,
+                    "isOpt": False
+                },
+                {
+                    "label": "A",
+                    "x1": 20,
+                    "x2": 0,
+                    "z": 600,
+                    "isOpt": False
+                },
+                {
+                    "label": "B",
+                    "x1": 20,
+                    "x2": 10,
+                    "z": 1100,
+                    "isOpt": True
+                },
+                {
+                    "label": "C",
+                    "x1": 10,
+                    "x2": 15,
+                    "z": 1050,
+                    "isOpt": False
+                },
+                {
+                    "label": "D",
+                    "x1": 0,
+                    "x2": 15,
+                    "z": 750,
+                    "isOpt": False
+                }
+            ]
+        }
+    },
+    {
+        "id": "lpp_7",
+        "title": "7. Warehouse Transportation LPP Model",
+        "difficulty": "medium",
+        "tags": [
+            "lpp",
+            "transportation-lpp"
+        ],
+        "context": "A regional logistics company manages 2 central distribution hubs supplying 3 major retail markets with varying unit freight rates. Total warehouse inventories and customer demand quotas must be balanced under transport capacity bounds. The logistics director needs an LP formulation to minimize total regional distribution costs across all supply channels.",
+        "steps": [
+            {
+                "title": "Decision Variables",
+                "explain": "Let x_ij = units shipped from warehouse i to customer j.",
+                "formulation": "x\u2081\u2081, x\u2081\u2082, x\u2081\u2083 (Warehouse 1)\nx\u2082\u2081, x\u2082\u2082, x\u2082\u2083 (Warehouse 2)"
+            },
+            {
+                "title": "Objective Function & Constraints",
+                "explain": "Minimize total transportation cost.",
+                "formulation": "Minimize Z = 2x\u2081\u2081 + 3x\u2081\u2082 + x\u2081\u2083 + 5x\u2082\u2081 + 4x\u2082\u2082 + 8x\u2082\u2083\nSubject to:\n  x\u2081\u2081+x\u2081\u2082+x\u2081\u2083 \u2264 120 (Supply 1)\n  x\u2082\u2081+x\u2082\u2082+x\u2082\u2083 \u2264 80  (Supply 2)\n  x\u2081\u2081+x\u2082\u2081 \u2265 150 (Demand 1)\n  x\u2081\u2082+x\u2082\u2082 \u2265 40  (Demand 2)\n  x\u2081\u2083+x\u2082\u2083 \u2265 10  (Demand 3)"
+            },
+            {
+                "title": "Optimal Solution",
+                "explain": "Solved via Simplex / Transportation Algorithm.",
+                "body": "<div class='res-box'><h4>\u2705 Optimal Transportation Schedule</h4><ul><li>Optimal shipping pattern minimizes cost across supply hubs.</li></ul></div>"
+            }
         ]
     },
     {
-        "id": "lpp_3", "title": "3. 7-Day Workforce Shift Scheduling",
-        "difficulty": "hard", "tags": ["workforce-scheduling", "integer-lpp"],
-        "context": "A plant operates 7 days a week. Minimum worker requirements: Mon=17, Tue=13, Wed=15, Thu=19, Fri=14, Sat=16, Sun=11. Each worker works 5 consecutive days and gets 2 days off. Minimize total workforce.",
+        "id": "lpp_8",
+        "title": "8. Refinery Crude Oil Blending",
+        "difficulty": "medium",
+        "tags": [
+            "lpp",
+            "blending"
+        ],
+        "context": "A petroleum refinery processes Crude Oil A (profit $4/barrel) and Crude Oil B (profit $5/barrel) into commercial gasoline blends. Operational safety guidelines require that Crude A cannot exceed Crude B in the blend ratio, while overall refinery distillation capacity is capped at 50 barrels per hour. The chemical engineer must optimize crude throughput to maximize hourly refinery margins.",
         "steps": [
-            {"title": "Decision Variables", "explain": "x_i = workers starting 5-day shift on day i.", "formulation": "Let x\u2081=Mon start, x\u2082=Tue, x\u2083=Wed, x\u2084=Thu, x\u2085=Fri, x\u2086=Sat, x\u2087=Sun"},
-            {"title": "Objective Function", "explain": "Minimize total workers hired.", "formulation": "Minimize Z = x\u2081 + x\u2082 + x\u2083 + x\u2084 + x\u2085 + x\u2086 + x\u2087"},
-            {"title": "Daily Coverage Constraints", "explain": "Each day must have enough workers on duty.", "formulation": "Subject to:\n  x\u2081+x\u2084+x\u2085+x\u2086+x\u2087 \u2265 17  (Mon)\n  x\u2081+x\u2082+x\u2085+x\u2086+x\u2087 \u2265 13  (Tue)\n  x\u2081+x\u2082+x\u2083+x\u2086+x\u2087 \u2265 15  (Wed)\n  x\u2081+x\u2082+x\u2083+x\u2084+x\u2087 \u2265 19  (Thu)\n  x\u2081+x\u2082+x\u2083+x\u2084+x\u2085 \u2265 14  (Fri)\n  x\u2082+x\u2083+x\u2084+x\u2085+x\u2086 \u2265 16  (Sat)\n  x\u2083+x\u2084+x\u2085+x\u2086+x\u2087 \u2265 11  (Sun)\n  x_i \u2265 0, integer"},
-            {"title": "Optimal Hiring Schedule", "explain": "Integer LPP optimal solution.", "body": "<div class=\"res-box\"><h4>\u2705 Optimal Hiring Schedule</h4><ul><li>x\u2081=4, x\u2082=8, x\u2083=2, x\u2084=6, x\u2085=0, x\u2086=3, x\u2087=0</li><li><strong>Minimum Total Workforce = 23 workers</strong></li></ul></div>"}
+            {
+                "title": "Decision Variables",
+                "explain": "Crude A (x1) and Crude B (x2) barrels.",
+                "formulation": "Let x\u2081 = barrels of Crude A\nLet x\u2082 = barrels of Crude B"
+            },
+            {
+                "title": "Objective Function & Constraints",
+                "explain": "Maximize blending profit.",
+                "formulation": "Maximize Z = 4x\u2081 + 5x\u2082\nSubject to:\n  x\u2081 - x\u2082 \u2264 0 (Octane ratio: x\u2081 \u2264 x\u2082)\n  x\u2081 + x\u2082 \u2264 50 (Total plant capacity)\n  x\u2081, x\u2082 \u2265 0"
+            },
+            {
+                "title": "Optimal Solution",
+                "explain": "Corner point evaluation.",
+                "body": "<div class='res-box'><h4>\u2705 Optimal Blend</h4><ul><li>Crude A (x\u2081) = <strong>0 bbl</strong></li><li>Crude B (x\u2082) = <strong>50 bbl</strong></li><li><strong>Maximum Profit = $250</strong></li></ul></div>"
+            }
+        ],
+        "graph": {
+            "type": "max",
+            "c1": 4,
+            "c2": 5,
+            "maxX1": 60,
+            "maxX2": 60,
+            "constraints": [
+                {
+                    "a1": 1,
+                    "a2": -1,
+                    "b": 0,
+                    "dir": "<=",
+                    "label": "x\u2081 - x\u2082 \u2264 0 (Octane Ratio)",
+                    "color": "#ef4444"
+                },
+                {
+                    "a1": 1,
+                    "a2": 1,
+                    "b": 50,
+                    "dir": "<=",
+                    "label": "x\u2081 + x\u2082 \u2264 50 (Plant Cap)",
+                    "color": "#3b82f6"
+                }
+            ],
+            "corners": [
+                {
+                    "label": "O",
+                    "x1": 0,
+                    "x2": 0,
+                    "z": 0,
+                    "isOpt": False
+                },
+                {
+                    "label": "A",
+                    "x1": 25,
+                    "x2": 25,
+                    "z": 225,
+                    "isOpt": False
+                },
+                {
+                    "label": "B",
+                    "x1": 0,
+                    "x2": 50,
+                    "z": 250,
+                    "isOpt": True
+                }
+            ]
+        }
+    },
+    {
+        "id": "lpp_9",
+        "title": "9. Financial Portfolio Asset Allocation",
+        "difficulty": "medium",
+        "tags": [
+            "lpp",
+            "portfolio"
+        ],
+        "context": "An asset management firm allocates institutional funds across high-yield stocks (12% expected return), corporate bonds (8% return), and liquid cash (4% return). Risk management policy dictates that stock holdings cannot exceed 60% of total capital, while bond allocations must comprise at least 20%. The portfolio manager aims to maximize overall portfolio yield under strict capital allocation rules.",
+        "steps": [
+            {
+                "title": "Decision Variables",
+                "explain": "x1 = Stocks %, x2 = Bonds %, x3 = Cash %.",
+                "formulation": "Let x\u2081 = Stocks %, x\u2082 = Bonds %, x\u2083 = Cash %"
+            },
+            {
+                "title": "Objective Function & Constraints",
+                "explain": "Maximize total portfolio return.",
+                "formulation": "Maximize Z = 0.12x\u2081 + 0.08x\u2082 + 0.04x\u2083\nSubject to:\n  x\u2081 + x\u2082 + x\u2083 = 100 (Total %)\n  x\u2081 \u2264 60 (Risk cap on stocks)\n  x\u2082 \u2265 20 (Min bond allocation)\n  x\u2081, x\u2082, x\u2083 \u2265 0"
+            },
+            {
+                "title": "Optimal Solution",
+                "explain": "Optimal 3-variable portfolio allocation.",
+                "body": "<div class='res-box'><h4>\u2705 Optimal Portfolio</h4><ul><li>Stocks (x\u2081) = <strong>60%</strong></li><li>Bonds (x\u2082) = <strong>40%</strong></li><li>Cash (x\u2083) = <strong>0%</strong></li><li><strong>Maximum Portfolio Return = 10.4%</strong></li></ul></div>"
+            }
         ]
+    },
+    {
+        "id": "lpp_10",
+        "title": "10. Garment Factory Production",
+        "difficulty": "medium",
+        "tags": [
+            "lpp",
+            "apparel"
+        ],
+        "context": "An apparel manufacturing facility produces formal shirts ($5 profit per unit) and tailored trousers ($7 profit per unit) across cutting and sewing departments. Shirts require 2 hours of cutting and 1 hour of sewing, whereas trousers require 1 hour of cutting and 3 hours of sewing. With total available shop time capped at 40 cutting hours and 45 sewing hours per week, management seeks the profit-maximizing unit output.",
+        "steps": [
+            {
+                "title": "Decision Variables",
+                "explain": "Shirts (x1) and Trousers (x2).",
+                "formulation": "Let x\u2081 = Shirts, x\u2082 = Trousers"
+            },
+            {
+                "title": "Objective Function & Constraints",
+                "explain": "Maximize profit.",
+                "formulation": "Maximize Z = 5x\u2081 + 7x\u2082\nSubject to:\n  2x\u2081 + x\u2082 \u2264 40 (Cutting)\n   x\u2081 + 3x\u2082 \u2264 45 (Sewing)\n  x\u2081, x\u2082 \u2265 0"
+            },
+            {
+                "title": "Optimal Solution",
+                "explain": "Corner point evaluation.",
+                "body": "<div class='res-box'><h4>\u2705 Optimal Mix</h4><ul><li>Shirts (x\u2081) = <strong>15</strong></li><li>Trousers (x\u2082) = <strong>10</strong></li><li><strong>Maximum Profit = $145</strong></li></ul></div>"
+            }
+        ],
+        "graph": {
+            "type": "max",
+            "c1": 5,
+            "c2": 7,
+            "maxX1": 25,
+            "maxX2": 20,
+            "constraints": [
+                {
+                    "a1": 2,
+                    "a2": 1,
+                    "b": 40,
+                    "dir": "<=",
+                    "label": "2x\u2081 + x\u2082 \u2264 40 (Cutting)",
+                    "color": "#ef4444"
+                },
+                {
+                    "a1": 1,
+                    "a2": 3,
+                    "b": 45,
+                    "dir": "<=",
+                    "label": "x\u2081 + 3x\u2082 \u2264 45 (Sewing)",
+                    "color": "#3b82f6"
+                }
+            ],
+            "corners": [
+                {
+                    "label": "O",
+                    "x1": 0,
+                    "x2": 0,
+                    "z": 0,
+                    "isOpt": False
+                },
+                {
+                    "label": "A",
+                    "x1": 20,
+                    "x2": 0,
+                    "z": 100,
+                    "isOpt": False
+                },
+                {
+                    "label": "B",
+                    "x1": 15,
+                    "x2": 10,
+                    "z": 145,
+                    "isOpt": True
+                },
+                {
+                    "label": "C",
+                    "x1": 0,
+                    "x2": 15,
+                    "z": 105,
+                    "isOpt": False
+                }
+            ]
+        }
+    },
+    {
+        "id": "lpp_11",
+        "title": "11. Electronics Assembly & Testing",
+        "difficulty": "medium",
+        "tags": [
+            "lpp",
+            "electronics"
+        ],
+        "context": "An electronics firm manufactures smart televisions (profit $12/unit) and digital radios (profit $7/unit) using automated assembly and quality testing lines. Producing a television requires 3 assembly hours and 1 testing hour, while a radio requires 2 assembly hours and 2 testing hours. Total weekly resource availability is limited to 60 assembly hours and 40 testing hours, requiring an optimal production plan.",
+        "steps": [
+            {
+                "title": "Decision Variables",
+                "explain": "TVs (x1) and Radios (x2).",
+                "formulation": "Let x\u2081 = TVs, x\u2082 = Radios"
+            },
+            {
+                "title": "Objective Function & Constraints",
+                "explain": "Maximize total profit.",
+                "formulation": "Maximize Z = 12x\u2081 + 7x\u2082\nSubject to:\n  3x\u2081 + 2x\u2082 \u2264 60 (Assembly)\n   x\u2081 + 2x\u2082 \u2264 40 (Testing)\n  x\u2081, x\u2082 \u2265 0"
+            },
+            {
+                "title": "Optimal Solution",
+                "explain": "Corner point evaluation.",
+                "body": "<div class='res-box'><h4>\u2705 Optimal Plan</h4><ul><li>TVs (x\u2081) = <strong>20</strong></li><li>Radios (x\u2082) = <strong>0</strong></li><li><strong>Maximum Profit = $240</strong></li></ul></div>"
+            }
+        ],
+        "graph": {
+            "type": "max",
+            "c1": 12,
+            "c2": 7,
+            "maxX1": 25,
+            "maxX2": 25,
+            "constraints": [
+                {
+                    "a1": 3,
+                    "a2": 2,
+                    "b": 60,
+                    "dir": "<=",
+                    "label": "3x\u2081 + 2x\u2082 \u2264 60 (Assembly)",
+                    "color": "#ef4444"
+                },
+                {
+                    "a1": 1,
+                    "a2": 2,
+                    "b": 40,
+                    "dir": "<=",
+                    "label": "x\u2081 + 2x\u2082 \u2264 40 (Testing)",
+                    "color": "#3b82f6"
+                }
+            ],
+            "corners": [
+                {
+                    "label": "O",
+                    "x1": 0,
+                    "x2": 0,
+                    "z": 0,
+                    "isOpt": False
+                },
+                {
+                    "label": "A",
+                    "x1": 20,
+                    "x2": 0,
+                    "z": 240,
+                    "isOpt": True
+                },
+                {
+                    "label": "B",
+                    "x1": 10,
+                    "x2": 15,
+                    "z": 225,
+                    "isOpt": False
+                },
+                {
+                    "label": "C",
+                    "x1": 0,
+                    "x2": 20,
+                    "z": 140,
+                    "isOpt": False
+                }
+            ]
+        }
+    },
+    {
+        "id": "lpp_12",
+        "title": "12. Chemical Reaction Blending",
+        "difficulty": "medium",
+        "tags": [
+            "lpp",
+            "chemical"
+        ],
+        "context": "A chemical processing plant blends Compound A ($8 profit per unit) and Compound B ($5 profit per unit) in a pressurized reactor. Total batch volume cannot exceed 200 units, while thermal stability requires the combined reaction rate index 3A + B to remain within 360 units. The chemical supervisor needs to maximize financial yield without triggering reactor instability.",
+        "steps": [
+            {
+                "title": "Decision Variables",
+                "explain": "Chemical A (x1) and B (x2).",
+                "formulation": "Let x\u2081 = Chemical A, x\u2082 = Chemical B"
+            },
+            {
+                "title": "Objective Function & Constraints",
+                "explain": "Maximize profit.",
+                "formulation": "Maximize Z = 8x\u2081 + 5x\u2082\nSubject to:\n   x\u2081 + x\u2082 \u2264 200 (Total Volume)\n  3x\u2081 + x\u2082 \u2264 360 (Reaction Limit)\n  x\u2081, x\u2082 \u2265 0"
+            },
+            {
+                "title": "Optimal Solution",
+                "explain": "Corner point evaluation.",
+                "body": "<div class='res-box'><h4>\u2705 Optimal Plan</h4><ul><li>Chemical A (x\u2081) = <strong>80 units</strong></li><li>Chemical B (x\u2082) = <strong>120 units</strong></li><li><strong>Maximum Profit = $1,240</strong></li></ul></div>"
+            }
+        ],
+        "graph": {
+            "type": "max",
+            "c1": 8,
+            "c2": 5,
+            "maxX1": 150,
+            "maxX2": 220,
+            "constraints": [
+                {
+                    "a1": 1,
+                    "a2": 1,
+                    "b": 200,
+                    "dir": "<=",
+                    "label": "x\u2081 + x\u2082 \u2264 200 (Total Volume)",
+                    "color": "#ef4444"
+                },
+                {
+                    "a1": 3,
+                    "a2": 1,
+                    "b": 360,
+                    "dir": "<=",
+                    "label": "3x\u2081 + x\u2082 \u2264 360 (Reaction Cap)",
+                    "color": "#3b82f6"
+                }
+            ],
+            "corners": [
+                {
+                    "label": "O",
+                    "x1": 0,
+                    "x2": 0,
+                    "z": 0,
+                    "isOpt": False
+                },
+                {
+                    "label": "A",
+                    "x1": 120,
+                    "x2": 0,
+                    "z": 960,
+                    "isOpt": False
+                },
+                {
+                    "label": "B",
+                    "x1": 80,
+                    "x2": 120,
+                    "z": 1240,
+                    "isOpt": True
+                },
+                {
+                    "label": "C",
+                    "x1": 0,
+                    "x2": 200,
+                    "z": 1000,
+                    "isOpt": False
+                }
+            ]
+        }
+    },
+    {
+        "id": "lpp_13",
+        "title": "13. Media Advertising Allocation",
+        "difficulty": "medium",
+        "tags": [
+            "lpp",
+            "advertising"
+        ],
+        "context": "A corporate marketing manager distributes an advertising budget between prime-time television broadcasts ($5,000 per ad, reaching 200,000 viewers) and daily newspaper features ($2,000 per ad, reaching 80,000 viewers). Total available campaign budget is $20,000, with contracts limiting television ads to at most 3 and newspaper placements to at most 7. The campaign goal is to maximize total audience reach.",
+        "steps": [
+            {
+                "title": "Decision Variables",
+                "explain": "TV ads (x1) and Newspaper ads (x2).",
+                "formulation": "Let x\u2081 = TV ads, x\u2082 = Newspaper ads"
+            },
+            {
+                "title": "Objective Function & Constraints",
+                "explain": "Maximize total viewers (in 1000s).",
+                "formulation": "Maximize Z = 200x\u2081 + 80x\u2082\nSubject to:\n  5x\u2081 + 2x\u2082 \u2264 20 (Budget)\n   x\u2081       \u2264 3  (TV cap)\n        x\u2082 \u2264 7  (Paper cap)\n  x\u2081, x\u2082 \u2265 0"
+            },
+            {
+                "title": "Optimal Solution",
+                "explain": "Corner point evaluation.",
+                "body": "<div class='res-box'><h4>\u2705 Optimal Ad Mix</h4><ul><li>TV Ads (x\u2081) = <strong>3</strong></li><li>Newspaper Ads (x\u2082) = <strong>2.5</strong></li><li><strong>Maximum Audience Reach = 800,000 viewers</strong></li></ul></div>"
+            }
+        ],
+        "graph": {
+            "type": "max",
+            "c1": 200,
+            "c2": 80,
+            "maxX1": 5,
+            "maxX2": 10,
+            "constraints": [
+                {
+                    "a1": 5,
+                    "a2": 2,
+                    "b": 20,
+                    "dir": "<=",
+                    "label": "5x\u2081 + 2x\u2082 \u2264 20 (Budget)",
+                    "color": "#ef4444"
+                },
+                {
+                    "a1": 1,
+                    "a2": 0,
+                    "b": 3,
+                    "dir": "<=",
+                    "label": "x\u2081 \u2264 3 (TV Cap)",
+                    "color": "#3b82f6"
+                },
+                {
+                    "a1": 0,
+                    "a2": 1,
+                    "b": 7,
+                    "dir": "<=",
+                    "label": "x\u2082 \u2264 7 (Paper Cap)",
+                    "color": "#10b981"
+                }
+            ],
+            "corners": [
+                {
+                    "label": "O",
+                    "x1": 0,
+                    "x2": 0,
+                    "z": 0,
+                    "isOpt": False
+                },
+                {
+                    "label": "A",
+                    "x1": 3,
+                    "x2": 0,
+                    "z": 600,
+                    "isOpt": False
+                },
+                {
+                    "label": "B",
+                    "x1": 3,
+                    "x2": 2.5,
+                    "z": 800,
+                    "isOpt": True
+                },
+                {
+                    "label": "C",
+                    "x1": 1.2,
+                    "x2": 7,
+                    "z": 800,
+                    "isOpt": True
+                },
+                {
+                    "label": "D",
+                    "x1": 0,
+                    "x2": 7,
+                    "z": 560,
+                    "isOpt": False
+                }
+            ]
+        }
+    },
+    {
+        "id": "lpp_14",
+        "title": "14. Bakery Pastry Production",
+        "difficulty": "medium",
+        "tags": [
+            "lpp",
+            "bakery"
+        ],
+        "context": "A commercial bakery produces artisanal cakes ($10 profit per unit) and specialty pastries ($6 profit per unit) requiring baking and icing processes. Each cake requires 2 hours of baking and 1 hour of icing, while each pastry batch requires 1 hour of baking and 2 hours of icing. Available shift capacities are 16 hours for baking and 16 hours for icing, requiring an optimal product mix.",
+        "steps": [
+            {
+                "title": "Decision Variables",
+                "explain": "Cakes (x1) and Pastries (x2).",
+                "formulation": "Let x\u2081 = Cakes, x\u2082 = Pastries"
+            },
+            {
+                "title": "Objective Function & Constraints",
+                "explain": "Maximize total profit.",
+                "formulation": "Maximize Z = 10x\u2081 + 6x\u2082\nSubject to:\n  2x\u2081 + x\u2082 \u2264 16 (Baking)\n   x\u2081 + 2x\u2082 \u2264 16 (Icing)\n  x\u2081, x\u2082 \u2265 0"
+            },
+            {
+                "title": "Optimal Solution",
+                "explain": "Corner point evaluation.",
+                "body": "<div class='res-box'><h4>\u2705 Optimal Production</h4><ul><li>Cakes (x\u2081) = <strong>5.33</strong></li><li>Pastries (x\u2082) = <strong>5.33</strong></li><li><strong>Maximum Profit = $85.33</strong></li></ul></div>"
+            }
+        ],
+        "graph": {
+            "type": "max",
+            "c1": 10,
+            "c2": 6,
+            "maxX1": 10,
+            "maxX2": 10,
+            "constraints": [
+                {
+                    "a1": 2,
+                    "a2": 1,
+                    "b": 16,
+                    "dir": "<=",
+                    "label": "2x\u2081 + x\u2082 \u2264 16 (Baking)",
+                    "color": "#ef4444"
+                },
+                {
+                    "a1": 1,
+                    "a2": 2,
+                    "b": 16,
+                    "dir": "<=",
+                    "label": "x\u2081 + 2x\u2082 \u2264 16 (Icing)",
+                    "color": "#3b82f6"
+                }
+            ],
+            "corners": [
+                {
+                    "label": "O",
+                    "x1": 0,
+                    "x2": 0,
+                    "z": 0,
+                    "isOpt": False
+                },
+                {
+                    "label": "A",
+                    "x1": 8,
+                    "x2": 0,
+                    "z": 80,
+                    "isOpt": False
+                },
+                {
+                    "label": "B",
+                    "x1": 5.33,
+                    "x2": 5.33,
+                    "z": 85.33,
+                    "isOpt": True
+                },
+                {
+                    "label": "C",
+                    "x1": 0,
+                    "x2": 8,
+                    "z": 48,
+                    "isOpt": False
+                }
+            ]
+        }
+    },
+    {
+        "id": "lpp_15",
+        "title": "15. Steel Plant Rolling Mill Production",
+        "difficulty": "medium",
+        "tags": [
+            "lpp",
+            "manufacturing"
+        ],
+        "context": "A steel manufacturing mill produces hot-rolled sheets ($15 profit/ton) and cold-rolled coils ($12 profit/ton) using rolling and finishing mills. Hot-rolled steel requires 4 hours of rolling mill time, whereas cold-rolled steel requires 2 hours of rolling and 2 hours of finishing mill time. Weekly capacities are 80 hours for the rolling mill and 40 hours for the finishing mill, requiring an optimal production schedule.",
+        "steps": [
+            {
+                "title": "Decision Variables",
+                "explain": "Hot-rolled (x1) and Cold-rolled (x2).",
+                "formulation": "Let x\u2081 = Hot-rolled tons, x\u2082 = Cold-rolled tons"
+            },
+            {
+                "title": "Objective Function & Constraints",
+                "explain": "Maximize mill profit.",
+                "formulation": "Maximize Z = 15x\u2081 + 12x\u2082\nSubject to:\n  4x\u2081 + 2x\u2082 \u2264 80 (Mill Time)\n        2x\u2082 \u2264 40 (Finishing)\n  x\u2081, x\u2082 \u2265 0"
+            },
+            {
+                "title": "Optimal Solution",
+                "explain": "Corner point evaluation.",
+                "body": "<div class='res-box'><h4>\u2705 Optimal Production</h4><ul><li>Hot-rolled (x\u2081) = <strong>10 tons</strong></li><li>Cold-rolled (x\u2082) = <strong>20 tons</strong></li><li><strong>Maximum Profit = $390</strong></li></ul></div>"
+            }
+        ],
+        "graph": {
+            "type": "max",
+            "c1": 15,
+            "c2": 12,
+            "maxX1": 25,
+            "maxX2": 25,
+            "constraints": [
+                {
+                    "a1": 4,
+                    "a2": 2,
+                    "b": 80,
+                    "dir": "<=",
+                    "label": "4x\u2081 + 2x\u2082 \u2264 80 (Mill Time)",
+                    "color": "#ef4444"
+                },
+                {
+                    "a1": 0,
+                    "a2": 2,
+                    "b": 40,
+                    "dir": "<=",
+                    "label": "2x\u2082 \u2264 40 (Finishing)",
+                    "color": "#3b82f6"
+                }
+            ],
+            "corners": [
+                {
+                    "label": "O",
+                    "x1": 0,
+                    "x2": 0,
+                    "z": 0,
+                    "isOpt": False
+                },
+                {
+                    "label": "A",
+                    "x1": 20,
+                    "x2": 0,
+                    "z": 300,
+                    "isOpt": False
+                },
+                {
+                    "label": "B",
+                    "x1": 10,
+                    "x2": 20,
+                    "z": 390,
+                    "isOpt": True
+                },
+                {
+                    "label": "C",
+                    "x1": 0,
+                    "x2": 20,
+                    "z": 240,
+                    "isOpt": False
+                }
+            ]
+        }
     }
 ]
-
-lpp_extras = [
-    ("Furniture Production (Carpentry & Painting)", "Carpenter hours = 48, Painter hours = 20. Tables profit $6, Chairs profit $8.", [["Let x\u2081 = Tables, x\u2082 = Chairs"],["Maximize Z = 6x\u2081 + 8x\u2082"],["Subject to: 3x\u2081+2x\u2082\u226448, x\u2081+2x\u2082\u226420, x\u2081,x\u2082\u22650"]]),
-    ("Farm Feed Diet Cost Minimization", "Mix grain and soybean to meet protein and fat requirements at minimum cost.", [["Let x\u2081=Grain bags, x\u2082=Soybean bags"],["Minimize Z = 2x\u2081 + 3x\u2082"],["Subject to: 3x\u2081+5x\u2082\u226590(protein), x\u2081+x\u2082\u226530(fat), x\u2081,x\u2082\u22650"]]),
-    ("Clothing Production (Parkas & Overcoats)", "Parkas need 1 sqft leather, Overcoats need 2 sqft. Profit: Parka=$30, Overcoat=$50.", [["Let x\u2081=Parkas, x\u2082=Overcoats"],["Maximize Z = 30x\u2081 + 50x\u2082"],["Subject to: x\u2081+2x\u2082\u226440(leather), x\u2081\u226420, x\u2082\u226515, x\u2081,x\u2082\u22650"]]),
-    ("Warehouse Transportation LPP Model", "Minimize shipping cost from 2 warehouses to 3 customers.", [["Let x_ij = units shipped from i to j"],["Minimize Z = 2x\u2081\u2081+3x\u2081\u2082+x\u2081\u2083+5x\u2082\u2081+4x\u2082\u2082+8x\u2082\u2083"],["Supply: 120, 80. Demand: 150, 40, 10"]]),
-    ("Refinery Crude Oil Blending", "Blend Crude A and B into Gasoline X and Y. Meeting octane and sulphur specs.", [["Let x\u2081=Crude A barrels, x\u2082=Crude B barrels"],["Maximize Z = 4x\u2081 + 5x\u2082"],["Subject to: 0.4x\u2081+0.2x\u2082\u22640.3(x\u2081+x\u2082)(octane), x\u2081+x\u2082\u226450000, x\u2081,x\u2082\u22650"]]),
-    ("Financial Portfolio Asset Allocation", "Invest in stocks, bonds, and cash to maximize returns meeting risk constraints.", [["Let x\u2081=Stock %, x\u2082=Bond %, x\u2083=Cash %"],["Maximize Z = 0.12x\u2081 + 0.08x\u2082 + 0.04x\u2083"],["Subject to: x\u2081+x\u2082+x\u2083=100, x\u2081\u226460(risk), x\u2082\u226520, x\u2081,x\u2082,x\u2083\u22650"]]),
-    ("Garment Factory Production", "Shirts need 2 hrs cutting, 1 hr sewing. Trousers need 1 hr cutting, 3 hrs sewing. Profit: Shirt=$5, Trouser=$7.", [["Let x\u2081=Shirts, x\u2082=Trousers"],["Maximize Z = 5x\u2081 + 7x\u2082"],["Subject to: 2x\u2081+x\u2082\u226440(cutting), x\u2081+3x\u2082\u226445(sewing), x\u2081,x\u2082\u22650"]]),
-    ("Electronics Assembly & Testing", "TVs take 3 hrs assembly, 1 hr testing. Radios take 2 hrs assembly, 2 hrs testing. Profit: TV=$12, Radio=$7.", [["Let x\u2081=TVs, x\u2082=Radios"],["Maximize Z = 12x\u2081 + 7x\u2082"],["Subject to: 3x\u2081+2x\u2082\u226460, x\u2081+2x\u2082\u226440, x\u2081,x\u2082\u22650"]]),
-    ("Chemical Reaction Blending", "Mix chemicals A and B to produce compound C. Concentration and purity constraints.", [["Let x\u2081=Chemical A, x\u2082=Chemical B"],["Maximize Z = 8x\u2081 + 5x\u2082"],["Subject to: x\u2081+x\u2082\u2264200, 3x\u2081+x\u2082\u2264360, x\u2081-x\u2082\u2264100, x\u2081,x\u2082\u22650"]]),
-    ("Media Advertising Allocation", "TV ads reach 200K viewers ($5K). Newspaper reaches 80K ($2K). Budget=$20K.", [["Let x\u2081=TV ads, x\u2082=Newspaper ads"],["Maximize Z = 200x\u2081 + 80x\u2082 (viewers in 1000s)"],["Subject to: 5x\u2081+2x\u2082\u226420(budget), x\u2081\u22645, x\u2082\u226410, x\u2081,x\u2082\u22650"]]),
-    ("Bakery Pastry Production", "Cakes take 2 hrs baking, 1 hr icing. Pastries take 1 hr baking, 2 hrs icing. Profit: Cake=$10, Pastry=$6.", [["Let x\u2081=Cakes, x\u2082=Pastries"],["Maximize Z = 10x\u2081 + 6x\u2082"],["Subject to: 2x\u2081+x\u2082\u226416, x\u2081+2x\u2082\u226416, x\u2081,x\u2082\u22650"]]),
-    ("Steel Plant Rolling Mill Production", "Hot-rolled steel needs 4 hrs mill time. Cold-rolled needs 2 hrs mill, 2 hrs finishing. Profit: Hot=$15, Cold=$12.", [["Let x\u2081=Hot-rolled, x\u2082=Cold-rolled"],["Maximize Z = 15x\u2081 + 12x\u2082"],["Subject to: 4x\u2081+2x\u2082\u226480(mill), 2x\u2082\u226440(finishing), x\u2081,x\u2082\u22650"]])
-]
-
-for i, (title, context, step_forms) in enumerate(lpp_extras, start=4):
-    lpp_problems.append({
-        "id": f"lpp_{i}", "title": f"{i}. {title}", "difficulty": "medium", "tags": ["lpp"],
-        "context": context,
-        "steps": [
-            {"title": "Decision Variables", "explain": step_forms[0][0], "formulation": step_forms[0][0]},
-            {"title": "Objective Function & Constraints", "explain": f"{step_forms[1][0]} | {step_forms[2][0]}", "formulation": f"{step_forms[1][0]}\n{step_forms[2][0]}"},
-            {"title": "Optimal Solution", "explain": "Solve graphically or via Simplex.", "body": f"<div class='res-box'><h4>\u2705 Optimal Plan</h4><ul><li>Objective Function: {step_forms[1][0]}</li><li>Key constraint: {step_forms[2][0]}</li><li><strong>Optimal BFS found at corner point intersection.</strong></li></ul></div>"}
-        ]
-    })
 
 # ─────────────────────────────────────────────────────────────────────────────
 # 2. TRANSPORTATION PROBLEMS (15) - with solver steps
@@ -147,7 +1237,7 @@ asgn_problems = [
     {
         "id": "asgn_1", "title": "1. Klyne's Household Chores Assignment",
         "type": "assignment", "difficulty": "medium", "tags": ["klyne","hungarian","line-coverage"],
-        "context": "Assign 4 children to 4 chores based on secret bid prices ($). After row and column reduction, lines < n, so matrix adjustment is required.",
+        "context": "Klyne's household needs to assign 4 children to 4 weekly household chores based on secret bid prices submitted by each child in dollars. To prevent conflict, each child must be assigned to exactly one unique chore while minimizing overall household allowance expenditure. After standard row and column reductions, minimum lines test fails (3 lines < n=4), requiring Hungarian matrix adjustment.",
         "rowLabels": ["Child 1","Child 2","Child 3","Child 4"],
         "colLabels": ["Chore 1","Chore 2","Chore 3","Chore 4"],
         "steps": [
@@ -161,7 +1251,7 @@ asgn_problems = [
     {
         "id": "asgn_2", "title": "2. Job Shop Machine Location Assignment",
         "type": "assignment", "difficulty": "medium", "tags": ["job-shop","dummy"],
-        "context": "Assign 3 machines to 4 locations. Dummy machine added for balance (0 cost). Direct assignment possible after row reduction.",
+        "context": "A manufacturing plant needs to assign 3 heavy industrial machines to 4 newly built shop-floor locations to minimize material handling costs. A dummy machine with zero cost everywhere is added to balance the 3x4 non-square matrix into a 4x4 Hungarian formulation. Direct assignment becomes possible immediately following row reduction.",
         "rowLabels": ["Machine 1","Machine 2","Machine 3","Dummy M4"],
         "colLabels": ["Location 1","Location 2","Location 3","Location 4"],
         "steps": [
@@ -173,7 +1263,7 @@ asgn_problems = [
     {
         "id": "asgn_3", "title": "3. IT Consultant Project Assignment",
         "type": "assignment", "difficulty": "hard", "tags": ["assignment","line-coverage","adjustment"],
-        "context": "Assign 4 IT consultants (Alex, Ben, Cara, Dev) to 4 projects (P1-P4) to minimize total cost ($K). After row+col reduction, 3 rows share zeros in only 2 columns - direct assignment fails. Hall's theorem: |{Alex,Ben,Cara}|=3 > |{P1,P2}|=2.",
+        "context": "An IT consulting firm needs to assign 4 senior consultants (Alex, Ben, Cara, Dev) to 4 client software projects (P1 through P4) based on estimated cost bids in thousands of dollars. Initial row and column reduction produces a matrix where three consultants share zeros in only two project columns. Applying the Hungarian coverage test forces a matrix adjustment with k=2 to achieve a valid 1-to-1 matching.",
         "rowLabels": ["Alex","Ben","Cara","Dev"],
         "colLabels": ["Project 1","Project 2","Project 3","Project 4"],
         "steps": [
@@ -188,7 +1278,7 @@ asgn_problems = [
     {
         "id": "asgn_4", "title": "4. Marketing Team Campaign Assignment",
         "type": "assignment", "difficulty": "hard", "tags": ["assignment","line-coverage","adjustment"],
-        "context": "Assign 4 marketing teams to 4 campaigns (TV, Radio, Print, Online). Budget cost ($L). Teams A,B,C have identical cost profiles for TV and Radio, so {A,B,C} -> {TV,Radio} violates Hall's theorem (3 rows, 2 cols).",
+        "context": "A corporate marketing department assigns 4 creative marketing teams to 4 product promotion campaigns (TV, Radio, Print, Online) to minimize total budget requirements in thousands of dollars. Three teams exhibit identical low-cost structures for TV and Radio, creating a 3-vs-2 zero conflict. The Hungarian algorithm adjusts the matrix with k=2 to break the bottleneck and form an optimal matching.",
         "rowLabels": ["Team A","Team B","Team C","Team D"],
         "colLabels": ["TV","Radio","Print","Online"],
         "steps": [
@@ -203,7 +1293,7 @@ asgn_problems = [
     {
         "id": "asgn_5", "title": "5. Hospital Nurse Ward Allocation",
         "type": "assignment", "difficulty": "hard", "tags": ["assignment","line-coverage","adjustment"],
-        "context": "Assign 4 nurses to 4 hospital wards (ICU, ER, Pediatric, Geriatric). Cost = shift difficulty score. Nurses 1,2,3 have identical low-difficulty scores for ICU/ER, creating a 3-vs-2 Hall's violation.",
+        "context": "A hospital nursing supervisor needs to assign 4 specialized nurses to 4 hospital wards (ICU, ER, Pediatric, Geriatric) based on shift difficulty scores. Three nurses share identical low difficulty ratings for ICU and ER, violating Hall's condition after initial reduction. Subtracting k=1 from uncovered cells creates a new zero at the Pediatric ward, enabling a complete unique assignment.",
         "rowLabels": ["Nurse 1","Nurse 2","Nurse 3","Nurse 4"],
         "colLabels": ["ICU","ER","Pediatric","Geriatric"],
         "steps": [
@@ -218,7 +1308,7 @@ asgn_problems = [
     {
         "id": "asgn_6", "title": "6. Research Scholar Paper Review",
         "type": "assignment", "difficulty": "hard", "tags": ["assignment","line-coverage","adjustment"],
-        "context": "Assign 4 scholars to review 4 research papers. Cost = review hours. All 3 junior scholars need equal time for Paper1/Paper2 due to same expertise level - creating a direct Hall's theorem violation (3 rows, 2 zero-columns).",
+        "context": "An academic journal editor assigns 4 research scholars to review 4 submitted research manuscripts based on estimated review turnaround times in hours. Three junior scholars require equal review times for Papers 1 and 2, causing 3 rows to compete for 2 zero-columns. The Hungarian method applies matrix adjustment with k=4 hours to allocate all manuscripts optimally.",
         "rowLabels": ["Scholar 1","Scholar 2","Scholar 3","Senior Scholar"],
         "colLabels": ["Paper 1","Paper 2","Paper 3","Paper 4"],
         "steps": [
@@ -233,7 +1323,7 @@ asgn_problems = [
     {
         "id": "asgn_7", "title": "7. Sales Rep Product Line Assignment",
         "type": "assignment", "difficulty": "hard", "tags": ["assignment","line-coverage","adjustment"],
-        "context": "Assign 4 sales reps to 4 product lines to minimize training/transition cost ($). Sarah, Mike, and Priya have identical cost profiles for Product Lines 1 & 2 - Hall's condition violated after row+column reduction.",
+        "context": "A commercial sales director assigns 4 senior sales representatives to 4 new product lines to minimize total transition and training costs in dollars. Three representatives possess identical proficiency for Product Lines 1 and 2, preventing direct assignment after reduction. Performing Hungarian matrix adjustment with k=6 resolves the conflict and minimizes total training expenditure.",
         "rowLabels": ["Sarah","Mike","Priya","Tom"],
         "colLabels": ["Prod Line 1","Prod Line 2","Prod Line 3","Prod Line 4"],
         "steps": [
@@ -248,7 +1338,7 @@ asgn_problems = [
     {
         "id": "asgn_8", "title": "8. Sports Coach Event Assignment",
         "type": "assignment", "difficulty": "hard", "tags": ["assignment","line-coverage","adjustment"],
-        "context": "Assign 4 coaches to 4 athletic events (100m, 200m, 400m, Relay). Effort index matrix. Coaches A,B,C have identical sprint aptitude (100m, 200m) - Hall's violation: 3 coaches compete for 2 event slots.",
+        "context": "A university athletics department assigns 4 track coaches to 4 event categories (100m, 200m, 400m, Relay) based on coaching effort index scores. Three sprint coaches have identical high aptitude for 100m and 200m events, creating a 3-coach conflict for 2 event slots. Matrix adjustment with k=3 expands zero coverage into the 400m event to achieve an optimal assignment.",
         "rowLabels": ["Coach A","Coach B","Coach C","Head Coach"],
         "colLabels": ["100m","200m","400m","Relay"],
         "steps": [
@@ -263,7 +1353,7 @@ asgn_problems = [
     {
         "id": "asgn_9", "title": "9. Delivery Van Route Assignment",
         "type": "assignment", "difficulty": "hard", "tags": ["assignment","line-coverage","adjustment"],
-        "context": "Assign 4 delivery vans to 4 routes to minimize total delivery time (minutes). Vans 1,2,3 have identical efficiency on Routes 1 & 2 - Hall's theorem violation forces matrix adjustment.",
+        "context": "A urban logistics manager assigns 4 delivery vans to 4 delivery routes based on estimated round-trip travel times in minutes. Three vans exhibit identical efficiency on Routes 1 and 2, requiring line coverage adjustment after initial reduction. Subtracting k=7 minutes from uncovered cells generates new zero entries on Route 3, achieving a total time minimization.",
         "rowLabels": ["Van 1","Van 2","Van 3","Van 4"],
         "colLabels": ["Route 1","Route 2","Route 3","Route 4"],
         "steps": [
@@ -278,7 +1368,7 @@ asgn_problems = [
     {
         "id": "asgn_10", "title": "10. Software Developer Sprint Assignment",
         "type": "assignment", "difficulty": "hard", "tags": ["assignment","line-coverage","adjustment"],
-        "context": "Assign 4 developers to 4 sprint modules (Frontend, Backend, Database, Testing). Story-point cost matrix. Alice, Bob, and Carol are equally proficient in Frontend/Backend, creating a 3-vs-2 Hall's theorem violation.",
+        "context": "An Agile scrum master assigns 4 developers (Alice, Bob, Carol, Tech Lead) to 4 sprint modules (Frontend, Backend, Database, Testing) based on estimated story-point effort. Alice, Bob, and Carol are equally skilled in Frontend and Backend, producing a 3-vs-2 zero constraint after reduction. Applying Hungarian adjustment with k=4 story points unlocks optimal task distribution.",
         "rowLabels": ["Alice","Bob","Carol","Tech Lead"],
         "colLabels": ["Frontend","Backend","Database","Testing"],
         "steps": [
@@ -293,7 +1383,7 @@ asgn_problems = [
     {
         "id": "asgn_11", "title": "11. Faculty Classroom Schedule Assignment",
         "type": "assignment", "difficulty": "hard", "tags": ["assignment","line-coverage","adjustment"],
-        "context": "Assign 4 faculty to 4 slots (8AM, 10AM, 12PM, 2PM) with minimum total inconvenience. Profs P, Q, R prefer morning equally - zeros only in {8AM, 10AM} for 3 faculty members, requiring line coverage adjustment.",
+        "context": "A university department head assigns 4 faculty members to 4 teaching time slots (8 AM, 10 AM, 12 PM, 2 PM) to minimize total faculty inconvenience scores. Three professors express equal preference for early morning slots, creating zero overlap in 8 AM and 10 AM columns. Matrix adjustment with k=3 inconvenience points resolves the schedule overlap.",
         "rowLabels": ["Prof. P","Prof. Q","Prof. R","Prof. S"],
         "colLabels": ["8 AM","10 AM","12 PM","2 PM"],
         "steps": [
@@ -308,7 +1398,7 @@ asgn_problems = [
     {
         "id": "asgn_12", "title": "12. Construction Worker Task Assignment",
         "type": "assignment", "difficulty": "hard", "tags": ["assignment","line-coverage","adjustment"],
-        "context": "Assign 4 workers to 4 tasks (Excavation, Concreting, Carpentry, Electrical). Hours matrix. Workers 1,2,3 are equally efficient in Excavation and Concreting - 3 workers, 2 columns creates a Hall's violation.",
+        "context": "A construction site manager assigns 4 skilled workers to 4 specialized tasks (Excavation, Concreting, Carpentry, Electrical) based on task completion hours. Three workers have identical productivity in Excavation and Concreting, preventing direct assignment. Executing Hungarian matrix adjustment with k=4 hours enables a complete task allocation at minimum total labor time.",
         "rowLabels": ["Worker 1","Worker 2","Worker 3","Foreman"],
         "colLabels": ["Excavation","Concreting","Carpentry","Electrical"],
         "steps": [
@@ -323,7 +1413,7 @@ asgn_problems = [
     {
         "id": "asgn_13", "title": "13. Exam Invigilator Hall Assignment",
         "type": "assignment", "difficulty": "hard", "tags": ["assignment","line-coverage","adjustment"],
-        "context": "Assign 4 invigilators to 4 exam halls. Cost = travel + setup time (minutes). Invigilators W,X,Y have equal proximity to Halls A and B - 3 rows sharing zeros in 2 columns, requiring line adjustment.",
+        "context": "A university examination board assigns 4 faculty invigilators to 4 exam halls based on travel and setup time in minutes. Three invigilators have equal proximity to Halls A and B, requiring line coverage matrix modification. Subtracting k=5 minutes from uncovered cells opens Hall C for assignment, minimizing total setup time.",
         "rowLabels": ["Inv. W","Inv. X","Inv. Y","Chief Inv."],
         "colLabels": ["Hall A","Hall B","Hall C","Hall D"],
         "steps": [
@@ -338,7 +1428,7 @@ asgn_problems = [
     {
         "id": "asgn_14", "title": "14. Financial Analyst Portfolio Assignment",
         "type": "assignment", "difficulty": "hard", "tags": ["assignment","line-coverage","adjustment"],
-        "context": "Assign 4 analysts to 4 portfolios (Equity, Debt, Hybrid, Gold). Risk-adjusted cost matrix. Analysts P,Q,R have identical proficiency for Equity & Debt - 3 analysts, 2 zero-columns. Hall's theorem violated.",
+        "context": "A investment bank assigns 4 financial analysts to 4 asset portfolios (Equity, Debt, Hybrid, Gold) based on risk-adjusted management cost scores. Three analysts possess identical competence in Equity and Debt portfolios, violating Hall's condition. Performing Hungarian adjustment with k=5 risk points yields a unique portfolio matching.",
         "rowLabels": ["Analyst P","Analyst Q","Analyst R","Senior Analyst"],
         "colLabels": ["Equity","Debt","Hybrid","Gold"],
         "steps": [
@@ -353,7 +1443,7 @@ asgn_problems = [
     {
         "id": "asgn_15", "title": "15. Supply Chain Agent Territory Assignment",
         "type": "assignment", "difficulty": "hard", "tags": ["assignment","line-coverage","adjustment"],
-        "context": "Assign 4 supply chain agents to 4 territories (North, South, East, West). Logistics cost matrix. Agents 1,2,3 have identical efficiency in North & South regions - Hall's theorem violated (3 agents, 2 zero-territory columns).",
+        "context": "A supply chain director assigns 4 regional field agents to 4 sales territories (North, South, East, West) based on total travel logistics costs in dollars. Three agents demonstrate identical efficiency in North and South territories, requiring matrix adjustment. Subtracting k=6 dollars from uncovered cells generates a new zero in the East territory for an optimal assignment.",
         "rowLabels": ["Agent 1","Agent 2","Agent 3","Regional Head"],
         "colLabels": ["North","South","East","West"],
         "steps": [
@@ -379,7 +1469,7 @@ sp_problems = [
             "shortest-path",
             "seervada-park"
         ],
-        "context": "Seervada Park needs to determine the shortest path from park entrance (O) to station T for tram operation. All distances in miles.",
+        "context": "Seervada Park management needs to determine the shortest path from the park entrance (Node O) to remote scenic station T for daily tram operations. The sightseeing trail network includes multiple intermediate junction stops (A, B, C, D, E) connected by scenic roads with known mileages. Using Dijkstra's algorithm step-by-step, the park supervisor computes the shortest path of 13 miles.",
         "network": {
             "nodes": [
                 {
@@ -630,7 +1720,7 @@ sp_problems = [
             "shortest-path",
             "road"
         ],
-        "context": "Find the shortest distance route from origin city S to destination city T through the arterial road network.",
+        "context": "A urban traffic authority needs to optimize the emergency vehicle route from central station S to peripheral industrial park T across 5 intermediate highway junctions. Road segments have varying speed limits and distance bottlenecks. Dijkstra's algorithm evaluates candidate paths step-by-step to establish the shortest distance route of 16 miles.",
         "network": {
             "nodes": [
                 {
@@ -882,7 +1972,7 @@ sp_problems = [
             "shortest-path",
             "supply"
         ],
-        "context": "Determine the lowest cost logistics shipping route from supplier S to retail terminal T.",
+        "context": "A logistics enterprise coordinates cargo shipments from central manufacturing hub S to retail distribution terminal T through 5 regional transit hubs. Transit times and toll fees are evaluated across all connecting corridors. The supply chain planner applies Dijkstra's algorithm to determine the minimum-cost routing of 12 units.",
         "network": {
             "nodes": [
                 {
@@ -1133,7 +2223,7 @@ sp_problems = [
             "shortest-path",
             "ambulance"
         ],
-        "context": "Find the fastest route for an emergency ambulance from accident site S to trauma hospital T.",
+        "context": "An emergency response center calculates the fastest route for an ambulance traveling from accident site S to trauma hospital T through 5 city intersections. Traffic congestion indexes dictate transit times across all intermediate street links. Dijkstra's algorithm evaluates real-time network states to establish the minimum response path of 11 minutes.",
         "network": {
             "nodes": [
                 {
@@ -1385,7 +2475,7 @@ sp_problems = [
             "shortest-path",
             "campus"
         ],
-        "context": "Find the shortest walking path from north campus gate S to main library T.",
+        "context": "A university facilities management department designs a pedestrian walkway guide connecting the main campus entrance S to the library complex T across 5 campus plazas. Distance measurements in meters are evaluated along paved pathways. Dijkstra's algorithm identifies the shortest walking route of 12 units.",
         "network": {
             "nodes": [
                 {
@@ -1630,7 +2720,7 @@ sp_problems = [
             "shortest-path",
             "network"
         ],
-        "context": "Route data packets from source server S to destination server T with minimum total latency (ms).",
+        "context": "A cloud infrastructure provider routes high-frequency data packets from origin server S to destination server T through 5 intermediate router nodes. Network latency and transmission delay in milliseconds are evaluated across all fiber connections. Dijkstra's algorithm calculates the minimum-latency network path of 13 ms.",
         "network": {
             "nodes": [
                 {
@@ -1881,7 +2971,7 @@ sp_problems = [
             "shortest-path",
             "pipeline"
         ],
-        "context": "Find the minimum energy pumping path from oil well S to refinery T.",
+        "context": "An energy corporation transports crude oil from extraction well S to coastal refinery T through 5 intermediate pumping stations. Energy consumption per barrel varies across pipeline terrain segments. Dijkstra's algorithm determines the minimum pumping energy path of 11 units.",
         "network": {
             "nodes": [
                 {
@@ -2127,7 +3217,7 @@ sp_problems = [
             "shortest-path",
             "train"
         ],
-        "context": "Optimize express train track route between origin station S and terminal T.",
+        "context": "A railway authority optimizes the express passenger train route connecting terminal station S to regional destination T through 5 intermediate junction cities. Track distance in kilometers is evaluated across all connecting rail segments. Dijkstra's algorithm computes the shortest rail route of 23 units.",
         "network": {
             "nodes": [
                 {
@@ -2377,7 +3467,7 @@ sp_problems = [
             "shortest-path",
             "delivery"
         ],
-        "context": "Find the shortest delivery van route from central warehouse S to customer station T.",
+        "context": "An e-commerce logistics firm plans the delivery van route from central distribution hub S to customer parcel locker T through 5 urban neighborhood checkpoints. Transit delays in minutes are calculated for each road link. Dijkstra's algorithm identifies the fastest delivery path of 12 minutes.",
         "network": {
             "nodes": [
                 {
@@ -2621,7 +3711,7 @@ sp_problems = [
             "shortest-path",
             "airport"
         ],
-        "context": "Determine the shortest travel path between airport gates S and T via transit shuttles.",
+        "context": "An airport operations group determines the fastest passenger transit path between arrival gate S and departure gate T across 5 terminal concourse junctions. Pedestrian walkway travel times in minutes are evaluated for all connecting corridors. Dijkstra's algorithm establishes the minimum layover travel path of 14 minutes.",
         "network": {
             "nodes": [
                 {
@@ -2865,7 +3955,7 @@ sp_problems = [
             "shortest-path",
             "telecom"
         ],
-        "context": "Route microwave communications signal from tower S to tower T with minimum attenuation.",
+        "context": "A telecommunications engineer routes a microwave communications signal from broadcasting tower S to receiver tower T through 5 relay repeater towers. Signal attenuation in decibels is evaluated across all line-of-sight links. Dijkstra's algorithm computes the minimum signal loss path of 15 dB.",
         "network": {
             "nodes": [
                 {
@@ -3109,7 +4199,7 @@ sp_problems = [
             "shortest-path",
             "water"
         ],
-        "context": "Determine main water pipe route from reservoir S to district T with minimum friction loss.",
+        "context": "A municipal water authority plans a high-pressure main supply pipe from reservoir S to district storage tank T through 5 distribution junctions. Hydraulic friction loss is calculated for all pipe segments. Dijkstra's algorithm determines the path of minimum total pressure loss (15 units).",
         "network": {
             "nodes": [
                 {
@@ -3353,7 +4443,7 @@ sp_problems = [
             "shortest-path",
             "tourist"
         ],
-        "context": "Find the cheapest flight connection itinerary from departure airport S to destination T.",
+        "context": "A travel agency compiles the lowest-cost flight itinerary connecting departure airport S to vacation destination T across 5 layover airport hubs. Airfare prices in hundreds of dollars are evaluated across all connecting flight legs. Dijkstra's algorithm calculates the cheapest flight path of 12 units.",
         "network": {
             "nodes": [
                 {
@@ -3597,7 +4687,7 @@ sp_problems = [
             "shortest-path",
             "cargo"
         ],
-        "context": "Optimize container truck route from port gate S to shipping berth T.",
+        "context": "A port authority optimizes container drayage truck movements from receiving gate S to berth terminal T through 5 port yard intersections. Transit times in minutes are calculated across all internal port roadways. Dijkstra's algorithm establishes the minimum drayage route of 17 minutes.",
         "network": {
             "nodes": [
                 {
@@ -3841,7 +4931,7 @@ sp_problems = [
             "shortest-path",
             "grid"
         ],
-        "context": "Select power transmission line path from sub-station S to grid node T to minimize resistance.",
+        "context": "An electric utility company routes a high-voltage power transmission line from power plant S to regional substation T across 5 grid node towers. Electrical resistance and line loss are evaluated for all candidate transmission corridors. Dijkstra's algorithm computes the path of minimum line resistance (15 units).",
         "network": {
             "nodes": [
                 {
@@ -4091,7 +5181,7 @@ mst_problems = [
             "mst",
             "seervada-park"
         ],
-        "context": "Seervada Park management needs to install telephone lines to connect all 7 stations (O, A, B, C, D, E, T) with minimum total cable length.",
+        "context": "Seervada Park management needs to install a permanent telephone communications network connecting all 7 stations (O, A, B, C, D, E, T) with minimum total cable length. The park terrain contains 11 candidate underground cable routes forming multiple closed loops. Prim's algorithm builds the minimum spanning tree step-by-step, achieving a total cable requirement of 14 miles.",
         "network": {
             "nodes": [
                 {
@@ -4340,7 +5430,7 @@ mst_problems = [
             "mst",
             "midwest-tv"
         ],
-        "context": "Midwest TV Cable Company provides cable service to five housing developments with minimum total cable distance.",
+        "context": "Midwest TV Cable Company provides cable television service to 5 residential housing developments connected to a central headend station. A total of 8 candidate cable corridors connect adjacent developments, forming 3 closed loops. Prim's algorithm connects all housing developments into a minimum spanning tree with a total cable length of 17 miles.",
         "network": {
             "nodes": [
                 {
@@ -4541,7 +5631,7 @@ mst_problems = [
             "mst",
             "office-fiber"
         ],
-        "context": "Connect all office department clusters (Hub, A, B, C, D, E, Gateway) with minimum total fiber optic cabling.",
+        "context": "An enterprise IT department needs to interconnect 7 departmental office clusters (Hub, A, B, C, D, E, Gateway) into a unified fiber optic network. The building floorplan features 12 candidate conduit paths forming 5 distinct structural cycles. Prim's algorithm selects the optimal non-cyclic links to construct a minimum spanning tree of 17 units.",
         "network": {
             "nodes": [
                 {
@@ -4795,7 +5885,7 @@ mst_problems = [
             "mst",
             "water-pipeline"
         ],
-        "context": "Design a water supply distribution grid connecting all 7 village sectors with minimum total pipeline distance.",
+        "context": "A rural water development agency plans a clean water distribution grid connecting 7 village residential sectors. The planned layout includes 13 candidate pipeline routes forming 6 closed hydraulic loops. Prim's algorithm identifies the minimum total pipe length (16 units) required to supply all sectors without redundant looping.",
         "network": {
             "nodes": [
                 {
@@ -5054,7 +6144,7 @@ mst_problems = [
             "mst",
             "campus-lan"
         ],
-        "context": "Connect all academic building clusters to the campus core network with minimum fiber run length.",
+        "context": "A university IT team installs high-speed fiber optic cabling to connect 7 academic building clusters to the campus network core. The campus layout offers 12 candidate duct paths with 5 structural cycles. Prim's algorithm connects all buildings into a minimum spanning tree requiring 16 units of fiber.",
         "network": {
             "nodes": [
                 {
@@ -5308,7 +6398,7 @@ mst_problems = [
             "mst",
             "railway-track"
         ],
-        "context": "Connect 8 regional railway stations and freight yards with minimum track laying distance.",
+        "context": "A regional rail network connects 8 passenger stations and freight yards across 14 candidate track corridors forming 6 closed loops. Rail engineers apply Prim's algorithm to determine the minimum total track construction distance (19 units) that ensures full network connectivity.",
         "network": {
             "nodes": [
                 {
@@ -5607,7 +6697,7 @@ mst_problems = [
             "mst",
             "electrical-grid"
         ],
-        "context": "Interconnect regional substations and power plants to form an electrical minimum spanning tree.",
+        "context": "A power utility company designs an interconnected electrical grid linking 7 regional substations and power plants. The network includes 12 high-voltage transmission lines forming 5 closed grid loops. Prim's algorithm constructs a minimum spanning tree requiring 19 units of transmission line.",
         "network": {
             "nodes": [
                 {
@@ -5861,7 +6951,7 @@ mst_problems = [
             "mst",
             "irrigation-canal"
         ],
-        "context": "Connect headworks to all agricultural canal clusters with minimum total canal length.",
+        "context": "An agricultural irrigation authority connects a river headworks to 6 farming canal sectors through 12 candidate canal channels forming 5 closed loops. Prim's algorithm determines the minimum total canal excavation length (16 units) that guarantees water flow to all sectors.",
         "network": {
             "nodes": [
                 {
@@ -6115,7 +7205,7 @@ mst_problems = [
             "mst",
             "smart-city"
         ],
-        "context": "Link 8 urban smart-city data nodes into a minimum spanning broadband backbone.",
+        "context": "A municipal smart-city initiative connects 8 urban data collection nodes with fiber optic broadband across 15 candidate duct pathways forming 7 structural loops. Prim's algorithm builds a minimum spanning network requiring 18 units of fiber cabling.",
         "network": {
             "nodes": [
                 {
@@ -6419,7 +7509,7 @@ mst_problems = [
             "mst",
             "gas-pipeline"
         ],
-        "context": "Connect natural gas compressor station to regional distribution stations with minimum pipeline length.",
+        "context": "A natural gas distributor connects a central compressor station to 6 regional distribution points across 12 candidate pipeline corridors forming 5 closed loops. Prim's algorithm identifies the minimum pipeline construction length of 19 units.",
         "network": {
             "nodes": [
                 {
@@ -6673,7 +7763,7 @@ mst_problems = [
             "mst",
             "hospital-data"
         ],
-        "context": "Connect critical care units (ER, ICU, OR, Lab, Radiology) with minimum data cabling latency.",
+        "context": "A medical center installs high-speed data cabling to link 7 critical care units (ER, ICU, OR, Lab, Radiology, Main Server, Switch) across 12 candidate conduit paths forming 5 loops. Prim's algorithm connects all medical units into a minimum spanning tree with a total latency length of 13 ms.",
         "network": {
             "nodes": [
                 {
@@ -6927,7 +8017,7 @@ mst_problems = [
             "mst",
             "chemical-sensor"
         ],
-        "context": "Connect industrial chemical sensors and alarm units to the central control room with minimum total wire length.",
+        "context": "An industrial chemical plant connects 7 hazardous material sensors and alarm units to the central control room across 12 candidate wiring channels forming 5 closed loops. Prim's algorithm calculates the minimum total wiring length of 15 units.",
         "network": {
             "nodes": [
                 {
@@ -7181,7 +8271,7 @@ mst_problems = [
             "mst",
             "isp-backbone"
         ],
-        "context": "Connect 8 regional internet exchange POPs with minimum fiber optic trunk distance.",
+        "context": "A telecommunications ISP connects 8 regional internet exchange POPs across 14 candidate fiber trunk routes forming 6 closed loops. Prim's algorithm establishes a minimum spanning backbone requiring 19 units of fiber cabling.",
         "network": {
             "nodes": [
                 {
@@ -7480,7 +8570,7 @@ mst_problems = [
             "mst",
             "university-cable"
         ],
-        "context": "Interconnect 7 campus academic complexes with minimum total utility trenching distance.",
+        "context": "A university physical plant department connects 7 academic complexes across 12 candidate utility trenches forming 5 closed loops. Prim's algorithm determines the minimum trenching distance of 16 units required to connect all buildings.",
         "network": {
             "nodes": [
                 {
@@ -7734,7 +8824,7 @@ mst_problems = [
             "mst",
             "warehouse-conveyor"
         ],
-        "context": "Link 8 warehouse sorting, packing, and dispatch zones with minimum conveyor track length.",
+        "context": "An automated e-commerce fulfillment center connects 8 sorting, packing, and dispatch zones across 14 candidate conveyor tracks forming 6 closed loops. Prim's algorithm calculates the minimum total conveyor track length (16 units) to link all warehouse zones.",
         "network": {
             "nodes": [
                 {
@@ -8196,12 +9286,388 @@ function renderHome() {
           <p>${m.desc}</p>
           <span class="mod-badge">${m.problems.length} Problems</span>
         </div>`).join('')}
+    </div>
+
+    <!-- Academic References & Primary Citations Footer -->
+    <div class="academic-citations-footer" style="margin-top:36px;padding:24px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;">
+      <h3 style="font-size:1.02rem;font-weight:700;color:#1b365d;margin-bottom:12px;display:flex;align-items:center;gap:8px;">
+        📚 Academic Textbooks & Primary References
+      </h3>
+      <p style="font-size:.84rem;color:#475569;margin-bottom:14px;line-height:1.6;">
+        The problem formulations, decision models, and solution algorithms in this hub are benchmarked against standard graduate operations research literature:
+      </p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;">
+        <div style="background:#fff;padding:12px 16px;border-radius:6px;border:1px solid #cbd5e1;font-size:.82rem;line-height:1.5;">
+          <strong style="color:#0f172a;">1. Hillier, F. S., & Lieberman, G. J.</strong><br/>
+          <em>Introduction to Operations Research</em> (11th Ed.). McGraw-Hill Education.<br/>
+          <span style="color:#64748b;font-size:.78rem;">Primary reference for Wyndor Glass LPP, Seervada Park Network, Dijkstra, and Prim algorithms.</span>
+        </div>
+        <div style="background:#fff;padding:12px 16px;border-radius:6px;border:1px solid #cbd5e1;font-size:.82rem;line-height:1.5;">
+          <strong style="color:#0f172a;">2. Taha, H. A.</strong><br/>
+          <em>Operations Research: An Introduction</em> (10th Ed.). Pearson Prentice Hall.<br/>
+          <span style="color:#64748b;font-size:.78rem;">Primary reference for Reddy Mikks LPP, MG Auto Transportation, and Hungarian Assignment Method.</span>
+        </div>
+        <div style="background:#fff;padding:12px 16px;border-radius:6px;border:1px solid #cbd5e1;font-size:.82rem;line-height:1.5;">
+          <strong style="color:#0f172a;">3. Winston, W. L.</strong><br/>
+          <em>Operations Research: Applications and Algorithms</em> (4th Ed.). Cengage Learning.<br/>
+          <span style="color:#64748b;font-size:.78rem;">Reference for multi-period workforce shift scheduling, diet cost models, and VAM penalty costs.</span>
+        </div>
+        <div style="background:#fff;padding:12px 16px;border-radius:6px;border:1px solid #cbd5e1;font-size:.82rem;line-height:1.5;">
+          <strong style="color:#0f172a;">4. Vohra, N. D.</strong><br/>
+          <em>Quantitative Techniques in Management</em> (5th Ed.). McGraw-Hill Education.<br/>
+          <span style="color:#64748b;font-size:.78rem;">Reference for managerial optimization models, VAM penalty tests, and line coverage adjustments.</span>
+        </div>
+      </div>
     </div>`;
 }
+
+
+// ─── LPP SVG GRAPH RENDERER (DYNAMIC EXPANDING AXES) ───────────────────────
+function drawLppGraph(g, customZ, activePoint) {
+  if (!g) return '';
+  const W = 480, H = 340, pad = 45;
+  
+  // Calculate dynamic axis bounds so graph automatically expands when values/sliders change!
+  let maxValX1 = g.maxX1 || 10;
+  let maxValX2 = g.maxX2 || 10;
+  
+  // Expand bounds based on constraint intercepts
+  (g.constraints || []).forEach(c => {
+    if (c.a1 > 0) { const x1Int = c.b / c.a1; if (x1Int > 0 && x1Int < 1000) maxValX1 = Math.max(maxValX1, x1Int * 1.15); }
+    if (c.a2 > 0) { const x2Int = c.b / c.a2; if (x2Int > 0 && x2Int < 1000) maxValX2 = Math.max(maxValX2, x2Int * 1.15); }
+  });
+  
+  // Expand bounds based on custom Z slider
+  const optCorner = g.corners ? g.corners.find(c => c.isOpt) || g.corners[0] : null;
+  const zVal = customZ !== undefined ? customZ : (optCorner ? optCorner.z : 0);
+  if (g.c1 > 0) maxValX1 = Math.max(maxValX1, (zVal / g.c1) * 1.1);
+  if (g.c2 > 0) maxValX2 = Math.max(maxValX2, (zVal / g.c2) * 1.1);
+  
+  // Round up bounds for clean ticks
+  const maxX1 = Math.ceil(maxValX1 / 5) * 5 || 10;
+  const maxX2 = Math.ceil(maxValX2 / 5) * 5 || 10;
+  
+  const toX = x => pad + (x / maxX1) * (W - pad - 25);
+  const toY = y => (H - pad) - (y / maxX2) * (H - pad - 25);
+  
+  // 1. Grid & Axes
+  let gridSvg = '';
+  const xStep = maxX1 / 5, yStep = maxX2 / 5;
+  for (let i = 0; i <= 5; i++) {
+    const valX = (i * xStep).toFixed(1).replace(/\.0$/, '');
+    const valY = (i * yStep).toFixed(1).replace(/\.0$/, '');
+    const px = toX(i * xStep), py = toY(i * yStep);
+    
+    gridSvg += `<line x1="${px}" y1="${pad-10}" x2="${px}" y2="${H-pad}" stroke="#e2e8f0" stroke-dasharray="2,2"/>`;
+    gridSvg += `<text x="${px}" y="${H-pad+15}" text-anchor="middle" font-size="10" fill="#64748b" font-weight="600">${valX}</text>`;
+    
+    gridSvg += `<line x1="${pad}" y1="${py}" x2="${W-15}" y2="${py}" stroke="#e2e8f0" stroke-dasharray="2,2"/>`;
+    gridSvg += `<text x="${pad-8}" y="${py+3}" text-anchor="end" font-size="10" fill="#64748b" font-weight="600">${valY}</text>`;
+  }
+  
+  gridSvg += `<line x1="${pad}" y1="${pad-15}" x2="${pad}" y2="${H-pad+5}" stroke="#334155" stroke-width="2.5"/>`;
+  gridSvg += `<line x1="${pad-5}" y1="${H-pad}" x2="${W-10}" y2="${H-pad}" stroke="#334155" stroke-width="2.5"/>`;
+  gridSvg += `<text x="${W-12}" y="${H-pad-6}" text-anchor="end" font-size="11" font-weight="800" fill="#1b365d">x₁</text>`;
+  gridSvg += `<text x="${pad+8}" y="${pad-5}" font-size="11" font-weight="800" fill="#1b365d">x₂</text>`;
+
+  // 2. Feasible Polygon (Shaded area)
+  let polygonSvg = '';
+  if (g.corners && g.corners.length >= 3) {
+    const cx = g.corners.reduce((sum, c) => sum + c.x1, 0) / g.corners.length;
+    const cy = g.corners.reduce((sum, c) => sum + c.x2, 0) / g.corners.length;
+    const sorted = [...g.corners].sort((a, b) => Math.atan2(a.x2 - cy, a.x1 - cx) - Math.atan2(b.x2 - cy, b.x1 - cx));
+    const pointsStr = sorted.map(c => `${toX(c.x1)},${toY(c.x2)}`).join(' ');
+    polygonSvg = `<polygon points="${pointsStr}" fill="rgba(34, 197, 94, 0.25)" stroke="#16a34a" stroke-width="2.2" stroke-dasharray="4,2"/>`;
+  }
+
+  // 3. Constraint Lines
+  let linesSvg = '';
+  (g.constraints || []).forEach((c, idx) => {
+    let p1, p2;
+    if (c.a2 === 0) {
+      const xVal = c.b / c.a1;
+      p1 = { x: toX(xVal), y: toY(0) };
+      p2 = { x: toX(xVal), y: toY(maxX2) };
+    } else if (c.a1 === 0) {
+      const yVal = c.b / c.a2;
+      p1 = { x: toX(0), y: toY(yVal) };
+      p2 = { x: toX(maxX1), y: toY(yVal) };
+    } else {
+      const xInt = c.b / c.a1, yInt = c.b / c.a2;
+      p1 = { x: toX(0), y: toY(yInt) };
+      p2 = { x: toX(xInt), y: toY(0) };
+    }
+    const color = c.color || ['#ef4444','#3b82f6','#10b981','#8b5cf6','#f59e0b'][idx % 5];
+    linesSvg += `<line x1="${p1.x}" y1="${p1.y}" x2="${p2.x}" y2="${p2.y}" stroke="${color}" stroke-width="2.2"/>`;
+  });
+
+  // 4. Objective Isoprofit Line
+  let isoSvg = '';
+  if (g.c1 !== undefined && g.c2 !== undefined && g.c2 !== 0) {
+    const yAt0 = zVal / g.c2;
+    const yAtMaxX = (zVal - g.c1 * maxX1) / g.c2;
+    const ix1 = toX(0), iy1 = toY(yAt0);
+    const ix2 = toX(maxX1), iy2 = toY(yAtMaxX);
+    isoSvg += `<line x1="${ix1}" y1="${iy1}" x2="${ix2}" y2="${iy2}" stroke="#eab308" stroke-width="3.5" stroke-dasharray="6,4"/>`;
+  }
+
+  // 5. Corner Points
+  let cornersSvg = '';
+  (g.corners || []).forEach(c => {
+    const cx = toX(c.x1), cy = toY(c.x2);
+    const r = c.isOpt ? 7.5 : 5.5;
+    const fill = c.isOpt ? '#16a34a' : '#2563eb';
+    const stroke = c.isOpt ? '#fff' : '#1d4ed8';
+    
+    cornersSvg += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${fill}" stroke="${stroke}" stroke-width="2"/>`;
+    const labelZ = c.z !== undefined ? ` (Z=${c.z.toFixed(1).replace(/\.0$/, '')})` : '';
+    cornersSvg += `<text x="${cx+8}" y="${cy-6}" font-size="11" font-weight="800" fill="${c.isOpt?'#15803d':'#1e293b'}">${c.label}${labelZ}</text>`;
+  });
+
+  return `
+    <div class="lpp-graph-container" style="background:#fff;border:1px solid #cbd5e1;border-radius:8px;padding:14px;margin:14px 0;">
+      <div style="font-size:.88rem;font-weight:700;color:#1b365d;margin-bottom:8px;display:flex;align-items:center;gap:6px;">
+        📈 Parallel Graphical Solution View (Auto-Scaling Axes: 0 to ${maxX1} x₁)
+        <span style="font-size:.75rem;font-weight:600;color:#16a34a;background:#dcfce7;padding:2px 8px;border-radius:4px;margin-left:auto;">Feasible Region & Isoprofit Sweep Line</span>
+      </div>
+      <svg viewBox="0 0 ${W} ${H}" width="100%" style="max-width:${W}px;display:block;margin:0 auto;background:#f8fafc;border-radius:6px;border:1px solid #e2e8f0;">
+        ${gridSvg}
+        ${polygonSvg}
+        ${linesSvg}
+        ${isoSvg}
+        ${cornersSvg}
+      </svg>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:10px;font-size:.76rem;color:#475569;justify-content:center;">
+        <span style="display:inline-flex;align-items:center;gap:4px;"><span style="width:12px;height:12px;background:rgba(34,197,94,0.3);border:1px solid #16a34a;display:inline-block;border-radius:2px;"></span> Feasible Region</span>
+        <span style="display:inline-flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;background:#16a34a;border-radius:50%;display:inline-block;"></span> Optimal Corner Vertex</span>
+        <span style="display:inline-flex;align-items:center;gap:4px;"><span style="width:16px;height:3px;background:#eab308;display:inline-block;"></span> Objective Line Z (${zVal.toFixed(1)})</span>
+      </div>
+    </div>
+  `;
+}
+
+// ─── LPP THEORY SECTION ──────────────────────────────────────────────────────
+function renderLppTheory() {
+  return `
+    <div class="lpp-theory-box" style="background:linear-gradient(135deg,#f0f9ff 0%,#e0f2fe 100%);border:1px solid #7dd3fc;border-radius:8px;padding:18px 22px;margin:16px 0;">
+      <h3 style="font-size:1.05rem;font-weight:700;color:#0369a1;margin-bottom:8px;display:flex;align-items:center;gap:8px;">
+        🎓 Fundamental Theorem of LPP: Why Solutions MUST Lie on Boundary or Corner Points
+      </h3>
+      <p style="font-size:.86rem;color:#334155;line-height:1.65;margin-bottom:14px;">
+        Students often ask: <em>"Why can't an optimal solution lie strictly inside the interior of the feasible region?"</em> Here is the exact mathematical and visual breakdown:
+      </p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;">
+        <div style="background:#fff;padding:14px;border-radius:6px;border:1px solid #bae6fd;">
+          <h4 style="font-size:.88rem;font-weight:700;color:#0284c7;margin-bottom:4px;">1. The Gradient / Push Intuition</h4>
+          <p style="font-size:.82rem;color:#475569;line-height:1.55;">
+            Inside an interior point, there is 360° open room in all directions. Moving in the direction of the objective gradient vector <strong>∇Z = (c₁, c₂)</strong> strictly increases Z. Because you can always step further in direction ∇Z without leaving the feasible region, no interior point can ever maximize Z! You keep pushing until you hit a constraint boundary wall.
+          </p>
+        </div>
+        <div style="background:#fff;padding:14px;border-radius:6px;border:1px solid #bae6fd;">
+          <h4 style="font-size:.88rem;font-weight:700;color:#0284c7;margin-bottom:4px;">2. Boundary to Corner Sliding</h4>
+          <p style="font-size:.82rem;color:#475569;line-height:1.55;">
+            Once pushed to a boundary constraint line, you can still slide along that line towards higher Z until you hit a second constraint line. Where two constraint lines intersect is a <strong>Corner Point (Vertex)</strong>. Here, no further feasible movement increases Z, establishing the corner point as optimal!
+          </p>
+        </div>
+        <div style="background:#fff;padding:14px;border-radius:6px;border:1px solid #bae6fd;">
+          <h4 style="font-size:.88rem;font-weight:700;color:#0284c7;margin-bottom:4px;">3. Convex Combination Proof</h4>
+          <p style="font-size:.82rem;color:#475569;line-height:1.55;">
+            Any interior point <strong>x</strong> is a weighted average (convex combination) of the vertices <strong>vᵢ</strong>: x = Σ λᵢ vᵢ. The linear objective Z(x) = Σ λᵢ Z(vᵢ) is a weighted average of vertex values. Since a weighted average can never strictly exceed the maximum component, <strong>max Z(vᵢ) ≥ Z(x)</strong>.
+          </p>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// ─── INTERACTIVE LPP BUILDER & PLAYGROUND ─────────────────────────────────────
+const builderState = {
+  type: 'max', c1: 5, c2: 4,
+  constraints: [
+    { a1: 6, a2: 4, b: 24, dir: '<=' },
+    { a1: 1, a2: 2, b: 6, dir: '<=' }
+  ],
+  customZ: null
+};
+
+function renderLppBuilder() {
+  const g = solveBuilderLpp();
+  return `
+    <div style="background:#fff;border:1px solid #cbd5e1;border-radius:8px;padding:20px;margin:20px 0;">
+      <h3 style="font-size:1.15rem;font-weight:700;color:#1b365d;margin-bottom:6px;display:flex;align-items:center;gap:8px;">
+        🛠️ Interactive Linear Programming Builder & Sensitivity Playground
+      </h3>
+      <p style="font-size:.85rem;color:#64748b;margin-bottom:16px;">
+        Build custom 2D LPP problems by modifying decision variable coefficients ($c_1, c_2$) and constraints. Watch the feasible region, corner point intersections, and isoprofit sweep line adjust live!
+      </p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;">
+        <!-- Controls Column -->
+        <div>
+          <div style="background:#f8fafc;padding:14px;border-radius:6px;border:1px solid #e2e8f0;margin-bottom:14px;">
+            <h4 style="font-size:.9rem;font-weight:700;color:#1e293b;margin-bottom:8px;">1. Objective Function</h4>
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+              <select onchange="updateBuilder('type', this.value)" style="padding:6px;border-radius:4px;border:1px solid #cbd5e1;font-weight:700;background:#fff;">
+                <option value="max" ${builderState.type==='max'?'selected':''}>Maximize Z</option>
+                <option value="min" ${builderState.type==='min'?'selected':''}>Minimize Z</option>
+              </select>
+              <span>=</span>
+              <input type="number" value="${builderState.c1}" onchange="updateBuilder('c1', parseFloat(this.value)|0)" style="width:65px;padding:6px;border-radius:4px;border:1px solid #cbd5e1;text-align:center;font-weight:700;"/>
+              <span>x₁ +</span>
+              <input type="number" value="${builderState.c2}" onchange="updateBuilder('c2', parseFloat(this.value)|0)" style="width:65px;padding:6px;border-radius:4px;border:1px solid #cbd5e1;text-align:center;font-weight:700;"/>
+              <span>x₂</span>
+            </div>
+          </div>
+
+          <div style="background:#f8fafc;padding:14px;border-radius:6px;border:1px solid #e2e8f0;margin-bottom:14px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+              <h4 style="font-size:.9rem;font-weight:700;color:#1e293b;">2. Constraints (Subject to:)</h4>
+              <button onclick="addBuilderConstraint()" style="background:#2563eb;color:#fff;border:none;border-radius:4px;padding:4px 10px;font-size:.78rem;font-weight:700;cursor:pointer;">+ Add Constraint</button>
+            </div>
+            ${builderState.constraints.map((c, i) => `
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;flex-wrap:wrap;">
+                <input type="number" value="${c.a1}" onchange="updateBuilderConstraint(${i}, 'a1', parseFloat(this.value)|0)" style="width:55px;padding:5px;border-radius:4px;border:1px solid #cbd5e1;text-align:center;"/>
+                <span style="font-size:.8rem;">x₁ +</span>
+                <input type="number" value="${c.a2}" onchange="updateBuilderConstraint(${i}, 'a2', parseFloat(this.value)|0)" style="width:55px;padding:5px;border-radius:4px;border:1px solid #cbd5e1;text-align:center;"/>
+                <span style="font-size:.8rem;">x₂</span>
+                <select onchange="updateBuilderConstraint(${i}, 'dir', this.value)" style="padding:5px;border-radius:4px;border:1px solid #cbd5e1;font-weight:700;background:#fff;">
+                  <option value="<=" ${c.dir==='<='?'selected':''}>≤</option>
+                  <option value=">=" ${c.dir==='>='?'selected':''}>≥</option>
+                </select>
+                <input type="number" value="${c.b}" onchange="updateBuilderConstraint(${i}, 'b', parseFloat(this.value)|0)" style="width:60px;padding:5px;border-radius:4px;border:1px solid #cbd5e1;text-align:center;font-weight:700;"/>
+                ${builderState.constraints.length > 1 ? `<button onclick="removeBuilderConstraint(${i})" style="background:#ef4444;color:#fff;border:none;border-radius:4px;padding:4px 8px;font-size:.75rem;cursor:pointer;margin-left:auto;">✕</button>` : ''}
+              </div>`).join('')}
+            <div style="font-size:.76rem;color:#64748b;margin-top:6px;">Non-negativity: x₁, x₂ ≥ 0 (implicit)</div>
+          </div>
+
+          <!-- Sensitivity Slider -->
+          <div style="background:#fef9c3;padding:14px;border-radius:6px;border:1px solid #fde047;">
+            <h4 style="font-size:.86rem;font-weight:700;color:#854d0e;margin-bottom:6px;">🎚️ Interactive Isoprofit Line Slider</h4>
+            <p style="font-size:.78rem;color:#713f12;margin-bottom:8px;">Drag Z value to sweep objective line across feasible region:</p>
+            <input type="range" min="0" max="${(g.optZ*1.4)||50}" step="1" value="${builderState.customZ!==null?builderState.customZ:(g.optZ||0)}" oninput="updateBuilderCustomZ(parseFloat(this.value))" style="width:100%;cursor:pointer;"/>
+            <div style="display:flex;justify-content:space-between;font-size:.8rem;font-weight:700;color:#854d0e;margin-top:4px;">
+              <span>Current Z: ${builderState.customZ!==null?builderState.customZ:(g.optZ||0)}</span>
+              <span>Optimal Z: ${(g.optZ||0).toFixed(1)}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Output Graph Column -->
+        <div>
+          ${drawLppGraph(g, builderState.customZ !== null ? builderState.customZ : undefined)}
+          <div style="background:#f0fdf4;border:1px solid #86efac;border-radius:6px;padding:12px;margin-top:10px;">
+            <h4 style="font-size:.86rem;font-weight:700;color:#166534;margin-bottom:4px;">✅ Builder Solution</h4>
+            <div style="font-size:.83rem;color:#166534;">
+              ${g.optCorner ? `Optimal Point: <strong>${g.optCorner.label} (${g.optCorner.x1.toFixed(2)}, ${g.optCorner.x2.toFixed(2)})</strong><br/>Optimal Z = <strong>${g.optZ.toFixed(2)}</strong>` : 'No feasible solution found with current constraints.'}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function updateBuilder(key, val) { builderState[key] = val; builderState.customZ = null; renderApp(); }
+function updateBuilderConstraint(i, key, val) { builderState.constraints[i][key] = val; builderState.customZ = null; renderApp(); }
+function addBuilderConstraint() { builderState.constraints.push({ a1: 1, a2: 1, b: 10, dir: '<=' }); builderState.customZ = null; renderApp(); }
+function removeBuilderConstraint(i) { builderState.constraints.splice(i, 1); builderState.customZ = null; renderApp(); }
+function updateBuilderCustomZ(val) { builderState.customZ = val; renderApp(); }
+
+function solveBuilderLpp() {
+  const lines = builderState.constraints.map((c, idx) => ({
+    a1: c.a1, a2: c.a2, b: c.b, dir: c.dir, label: `${c.a1}x₁ + ${c.a2}x₂ ${c.dir==='<='?'≤':'≥'} ${c.b}`,
+    color: ['#ef4444','#3b82f6','#10b981','#8b5cf6','#f59e0b'][idx % 5]
+  }));
+  
+  // Find all pairwise line intersections + axes
+  const pts = [{ x1: 0, x2: 0 }];
+  const allLines = [...lines, { a1: 1, a2: 0, b: 0, dir: '>=' }, { a1: 0, a2: 1, b: 0, dir: '>=' }];
+  
+  for (let i = 0; i < allLines.length; i++) {
+    for (let j = i + 1; j < allLines.length; j++) {
+      const l1 = allLines[i], l2 = allLines[j];
+      const det = l1.a1 * l2.a2 - l1.a2 * l2.a1;
+      if (Math.abs(det) > 1e-6) {
+        const x1 = (l1.b * l2.a2 - l1.a2 * l2.b) / det;
+        const x2 = (l1.a1 * l2.b - l1.b * l2.a1) / det;
+        if (x1 >= -1e-4 && x2 >= -1e-4) {
+          pts.push({ x1: Math.max(0, x1), x2: Math.max(0, x2) });
+        }
+      }
+    }
+  }
+  
+  // Filter feasible points
+  const feasible = pts.filter(p => {
+    return lines.every(c => {
+      const val = c.a1 * p.x1 + c.a2 * p.x2;
+      return c.dir === '<=' ? val <= c.b + 1e-4 : val >= c.b - 1e-4;
+    });
+  });
+  
+  // Unique corners
+  const corners = [];
+  const labels = ['O','A','B','C','D','E','F','G'];
+  let maxX1 = 5, maxX2 = 5;
+  
+  feasible.forEach((p) => {
+    if (!corners.some(c => Math.abs(c.x1 - p.x1) < 1e-3 && Math.abs(c.x2 - p.x2) < 1e-3)) {
+      const z = builderState.c1 * p.x1 + builderState.c2 * p.x2;
+      corners.push({ label: labels[corners.length % labels.length], x1: p.x1, x2: p.x2, z: z, isOpt: false });
+      if (p.x1 > maxX1) maxX1 = p.x1;
+      if (p.x2 > maxX2) maxX2 = p.x2;
+    }
+  });
+  
+  // Determine optimal corner
+  let optZ = builderState.type === 'max' ? -Infinity : Infinity;
+  let optCorner = null;
+  corners.forEach(c => {
+    if (builderState.type === 'max' ? c.z > optZ : c.z < optZ) {
+      optZ = c.z; optCorner = c;
+    }
+  });
+  if (optCorner) optCorner.isOpt = true;
+  
+  return {
+    type: builderState.type, c1: builderState.c1, c2: builderState.c2,
+    constraints: lines, corners: corners, optCorner: optCorner, optZ: optZ || 0,
+    maxX1: Math.ceil(maxX1 * 1.3), maxX2: Math.ceil(maxX2 * 1.3)
+  };
+}
+
 
 // PROBLEM LIST
 function renderProblemList(mod) {
   const filtered = state.difficultyFilter === 'all' ? mod.problems : mod.problems.filter(p => p.difficulty === state.difficultyFilter);
+  if (mod.id === 'lpp') {
+    return `
+      <button class="back-btn" onclick="gotoTab('home')">← Back to Modules</button>
+      <div class="sec-title">${mod.icon} ${mod.title}</div>
+      <p class="sec-desc">${mod.desc}</p>
+      ${renderLppTheory()}
+      ${renderLppBuilder()}
+      <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:center;">
+        ${['all','easy','medium','hard'].map(d => `
+          <button onclick="filterDifficulty('${d}')" style="padding:5px 14px;border-radius:4px;border:1px solid;cursor:pointer;font-size:.8rem;font-weight:600;background:${state.difficultyFilter===d?mod.color:'#fff'};color:${state.difficultyFilter===d?'#fff':'#374151'};border-color:${state.difficultyFilter===d?mod.color:'#d1d5db'};">
+            ${d.charAt(0).toUpperCase()+d.slice(1)}
+          </button>`).join('')}
+        <span style="margin-left:auto;font-size:.82rem;color:#64748b;">${filtered.length} problems</span>
+      </div>
+      <div class="prob-list">
+        ${filtered.map(p => `
+          <div class="prob-item" onclick="selectProblem('${p.id}')">
+            <div>
+              <h4>${p.title}</h4>
+              <p>${p.context.slice(0,100)}…</p>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;">
+              <span class="diff ${p.difficulty==='easy'?'d-easy':p.difficulty==='hard'?'d-hard':'d-med'}">${p.difficulty}</span>
+              <span style="color:#94a3b8;font-size:1.1rem;">›</span>
+            </div>
+          </div>`).join('')}
+      </div>`;
+  }
   return `
     <button class="back-btn" onclick="gotoTab('home')">← Back to Modules</button>
     <div class="sec-title">${mod.icon} ${mod.title}</div>
@@ -8256,7 +9722,8 @@ function renderProblemDetail(problem, mod) {
 
 // LPP / GENERAL
 function renderGeneral(p) {
-  return (p.steps||[]).map((s,i) => {
+  const graphHtml = p.graph ? drawLppGraph(p.graph) : '';
+  const stepsHtml = (p.steps||[]).map((s,i) => {
     const id = `info-g-${i}`;
     const hidden = state.hiddenInfoMap[id];
     return `
@@ -8269,6 +9736,7 @@ function renderGeneral(p) {
         </div>
       </div>`;
   }).join('');
+  return stepsHtml + graphHtml;
 }
 
 // TRANSPORT
